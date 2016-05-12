@@ -17,21 +17,24 @@ echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbr
 
 brew doctor
 brew update
-brew install fish zsh htop
-brew install coreutils binutils
+brew install coreutils binutils fish zsh htop
 brew cleanup
 
+##### Adding fish and ZSH shells to shells #####
 echo $(which fish) | sudo tee -a /etc/shells
 echo $(which zsh) | sudo tee -a /etc/shells
 
+##### Changing to fish shell #####
 sudo chsh -s $(which fish) $USER
 
+##### Adding custom functions to fish shell #####
 echo '
 function dl --description "Parallel and resumable download with aria2c"
     aria2c -c -x 4 $argv[1]
 end
 ' > ~/.config/fish/functions/dl.fish
 
+##### Adding custom functions to fish shell for !! #####
 echo '
 function sudo
     if test "$argv" = !!
@@ -41,6 +44,8 @@ function sudo
     end
 end
 ' > ~/.config/fish/functions/sudo.fish
+
+##### Adding variables and paths in fish shell #####
 
 echo '
 Now run these lazy boyyy......
