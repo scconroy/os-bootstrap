@@ -1,6 +1,8 @@
+##### Script to setup LinuxBrew and fish shell on linux ##### 
+
 cd ~
 
-sudo apt-get install build-essential ncurses-dev libncurses5-dev curl gettext bc  autoconf ruby -y 
+sudo apt-get install build-essential ncurses-dev libncurses5-dev curl gettext bc autoconf ruby -y 
 sudo yum groupinstall "Development Tools" -y
 sudo yum install ncurses-devel curl -y
 
@@ -52,8 +54,9 @@ set -U HOMEBREW_BUILD_FROM_SOURCE 1
 
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
 fisher simple z fzf edc/bass omf/tab
-fisher i omf/plugin-brew
-fisher i omf/theme-l
+fisher omf/plugin-brew
+fisher omf/theme-l
 '
 
+echo "Now starting fish shell..."
 fish
