@@ -2,7 +2,7 @@
 
 cd ~
 
-sudo apt-get install build-essential ncurses-dev libncurses5-dev curl gettext bc autoconf ruby -y 
+sudo apt-get install build-essential ncurses-dev libncurses5-dev curl gettext bc autoconf git python ruby -y 
 sudo yum groupinstall "Development Tools" -y
 sudo yum install ncurses-devel curl -y
 
@@ -25,6 +25,16 @@ brew cleanup
 ##### Adding fish and ZSH shells to shells #####
 echo $(which fish) | sudo tee -a /etc/shells
 echo $(which zsh) | sudo tee -a /etc/shells
+
+##### Compiling MTR from git HEAD and installing it #####
+git clone https://github.com/traviscross/mtr.git
+cd mtr
+./bootstrap.sh
+./configure --without-gtk
+make
+sudo make install
+cd .. 
+rm -rf mtr/
 
 ##### Changing to fish shell #####
 sudo chsh -s $(which fish) $USER
