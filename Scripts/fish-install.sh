@@ -13,6 +13,8 @@ echo 'export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"' >> ~/.bashrc
 echo 'export HOMEBREW_BUILD_FROM_SOURCE=1' >> ~/.bashrc
 source ~/.bashrc
 
+##### Installs LinuxBrew and installs required packages ##### 
+
 echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
 
 brew doctor
