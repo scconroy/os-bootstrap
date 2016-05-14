@@ -39,7 +39,7 @@ rm -rf mtr/
 ##### Changing to fish shell #####
 sudo chsh -s $(which fish) $USER
 
-##### Changing to fish shell #####
+##### Creating directories for fish shell #####
 mkdir -p ~/.config/fish/functions/
 
 ##### Adding custom functions to fish shell #####
