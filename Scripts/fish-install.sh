@@ -39,6 +39,9 @@ rm -rf mtr/
 ##### Changing to fish shell #####
 sudo chsh -s $(which fish) $USER
 
+##### Changing to fish shell #####
+mkdir -p ~/.config/fish/functions/
+
 ##### Adding custom functions to fish shell #####
 echo '
 function dl --description "Parallel and resumable download with aria2c"
