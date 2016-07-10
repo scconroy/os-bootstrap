@@ -19,12 +19,18 @@ echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbr
 
 brew doctor
 brew update
-brew install coreutils binutils fish zsh htop
+brew install coreutils binutils fish zsh htop nano
 brew cleanup
 
 ##### Adding fish and ZSH shells to shells #####
 echo $(which fish) | sudo tee -a /etc/shells
 echo $(which zsh) | sudo tee -a /etc/shells
+
+##### Adding nanorc to config #####
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+
+##### Incase glibc install fails #####
+#/bin/rm -rf ~/.linuxbrew/Cellar/glibc
 
 ##### Compiling MTR from git HEAD and installing it #####
 git clone https://github.com/traviscross/mtr.git
