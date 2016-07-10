@@ -19,7 +19,7 @@ echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbr
 
 brew doctor
 brew update
-brew install coreutils binutils fish zsh htop nano
+brew install coreutils binutils fish zsh htop homebrew/dupes/nano
 brew cleanup
 
 ##### Adding fish and ZSH shells to shells #####
