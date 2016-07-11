@@ -30,6 +30,7 @@ echo $(which zsh) | sudo tee -a /etc/shells
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
+touch ~/.zshrc
 zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
@@ -38,8 +39,10 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
+
 ##### Creating zpreztorc file #####
-echo "
+bash
+echo '
 #
 # Sets Prezto options.
 #
@@ -212,10 +215,10 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
-" > ~/.zpreztorc
+' > ~/.zpreztorc
 
 ##### Creating zshrc file #####
-echo "
+echo '
 #
 # Executes commands at the start of an interactive session.
 #
@@ -254,7 +257,7 @@ export PATH=$PATH:$GOPATH/bin
 
 alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
 alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
-" > ~/.zshrc
+' > ~/.zshrc
 
 ##### ZSH Completions #####
 brew install zsh-autosuggestions zsh-history-substring-search zsh-navigation-tools zshdb zsh-completions zsh-lovers zsh-syntax-highlighting
@@ -275,6 +278,7 @@ fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
 # Rebuild the z cache
 rm -f ~/.zcompdump; compinit
 source ~/.zshrc
+zsh
 
 ##### Incase glibc install fails #####
 #/bin/rm -rf ~/.linuxbrew/Cellar/glibc
