@@ -29,21 +29,6 @@ echo $(which zsh) | sudo tee -a /etc/shells
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
-##### ZSH Completions #####
-brew install zsh-autosuggestions zsh-history-substring-search zsh-navigation-tools zshdb zsh-completions zsh-lovers zsh-syntax-highlighting
-
-##### Adding ZSH completions to path #####
-source $HOME/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fpath+=( $HOME/.linuxbrew/share/zsh-navigation-tools )
-source $HOME/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
-fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOME/.linuxbrew/share/zsh-syntax-highlighting/highlighters
-
-# Rebuild the z cache
-rm -f ~/.zcompdump; compinit
-# source ~/.zshrc
-
 ##### Installing prezto #####
 zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -53,7 +38,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-##################
+##### Creating zpreztorc file #####
 echo "
 #
 # Sets Prezto options.
@@ -229,7 +214,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 " > ~/.zpreztorc
 
-##### Incase glibc install fails #####
+##### Creating zshrc file #####
 echo "
 #
 # Executes commands at the start of an interactive session.
@@ -271,6 +256,26 @@ alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew 
 alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
 " > ~/.zshrc
 
+##### ZSH Completions #####
+brew install zsh-autosuggestions zsh-history-substring-search zsh-navigation-tools zshdb zsh-completions zsh-lovers zsh-syntax-highlighting
+
+##### Adding ZSH completions to path #####
+echo "
+source $HOME/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOME/.linuxbrew/share/zsh-syntax-highlighting/highlighters
+" >> ~/.zshrc
+
+echo '
+fpath+=( $HOME/.linuxbrew/share/zsh-navigation-tools )
+fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
+' >> ~/.zshrc
+
+# Rebuild the z cache
+rm -f ~/.zcompdump; compinit
+source ~/.zshrc
+
 ##### Incase glibc install fails #####
 #/bin/rm -rf ~/.linuxbrew/Cellar/glibc
 
@@ -284,8 +289,8 @@ sudo make install
 cd .. 
 rm -rf mtr/
 
-##### Changing to fish shell #####
-sudo chsh -s $(which fish) $USER
+##### Changing to zsh shell #####
+sudo chsh -s $(which zsh) $USER
 
 ##### Creating directories for fish shell #####
 mkdir -p ~/.config/fish/functions/
