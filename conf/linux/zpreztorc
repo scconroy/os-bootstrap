@@ -30,18 +30,17 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'ssh' \
   'completion' \
-  'ruby' \
-  'syntax-highlighting' \
-  'history-substring-search' \
-  'rails' \
   'python' \
   'rsync' \
   'screen' \
-  'ssh' \
   'gnu-utility' \
   'tmux' \
+  'git' \
   'utility' \
+  'syntax-highlighting' \
+  'history-substring-search' \
   'prompt'
 
 #
