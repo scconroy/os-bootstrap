@@ -11,28 +11,26 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
 # Prezto update
 alias pzupdate='cd ~/.zprezto && git pull && git submodule update --init --recursive && cd -'
-
-#PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-#MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias ls='ls --color=auto'
 
+## Setup LinuxBrew
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export HOMEBREW_BUILD_FROM_SOURCE=1
 
-# Until LinuxBrew is fixed, the following is required.
-# See: https://github.com/Homebrew/linuxbrew/issues/47
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib64/pkgconfig:/usr/share/pkgconfig:$PKG_CONFIG_PATH
-## Setup linux brew
-export LINUXBREWHOME=$HOME/.linuxbrew
-export PATH=$LINUXBREWHOME/bin:$PATH
-export MANPATH=$LINUXBREWHOME/man:$MANPATH
-export PKG_CONFIG_PATH=$LINUXBREWHOME/lib64/pkgconfig:$LINUXBREWHOME/lib/pkgconfig:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=$LINUXBREWHOME/lib64:$LINUXBREWHOME/lib:$LD_LIBRARY_PATH
+# Brew and Pip aliases
+alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
+alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
-source ~/.ssh/vmie.zsh
+# VMIE SSH Identities
+source $HOME/.ssh/vmie.zsh
 
 unalias run-help
 autoload run-help
-HELPDIR=/home/ec2-user/.linuxbrew/share/zsh/help
+HELPDIR=$HOME/.linuxbrew/share/zsh/help
