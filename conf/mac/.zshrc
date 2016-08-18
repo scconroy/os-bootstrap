@@ -43,5 +43,7 @@ source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
+source ~/.ssh/vmie.zsh
+
 #fpath+=( $HOME/.linuxbrew/share/zsh-navigation-tools )
 #fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
