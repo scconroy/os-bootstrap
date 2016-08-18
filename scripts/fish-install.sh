@@ -40,8 +40,7 @@ echo $(which zsh) | sudo tee -a /etc/shells
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
-touch ~/.zshrc
-zsh
+zsh | q
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
