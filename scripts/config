@@ -1,0 +1,41 @@
+Host amzn
+    HostName 54.165.96.65
+
+Host ubuntu
+    HostName 52.6.61.58
+    User ubuntu
+
+Host fedora
+    HostName 52.4.214.218
+    User fedora
+
+Host arch
+    HostName 52.0.110.43
+    User root
+
+Host coreos
+    HostName 52.1.211.78
+    User core
+
+Host redhat
+    HostName 52.7.149.98
+
+Host gorthia-desktop
+    #HostName gorthia-desktop.aka.amazon.com
+    HostName u6451063ee81456fff6ed.ant.amazon.com
+    User gorthia
+
+Host rpi
+  	HostName rpi
+  	User pi
+
+Host rpi2
+    HostName rpi2
+    User pi
+
+Host *
+    ServerAliveInterval 60
+    ForwardAgent yes
+    Port 22
+    User ec2-user
+    IdentityFile ~/.ssh/ec2-anupam-iad.pem

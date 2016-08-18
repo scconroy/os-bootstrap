@@ -1,0 +1,1 @@
+curl -u username:password -vkL http://<uri> -w "@curl-format" -o /dev/null
