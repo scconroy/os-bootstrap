@@ -1,5 +1,6 @@
 #!/bin/bash
 
+##### Installing required Tools and dependencies #####
 sudo apt-get install build-essential ncurses-dev libncurses5-dev curl gettext bc autoconf git python ruby -y 
 sudo yum groupinstall "Development Tools" -y
 sudo yum install ncurses-devel curl -y
