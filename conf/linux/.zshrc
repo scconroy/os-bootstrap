@@ -31,6 +31,8 @@ export MANPATH=$LINUXBREWHOME/man:$MANPATH
 export PKG_CONFIG_PATH=$LINUXBREWHOME/lib64/pkgconfig:$LINUXBREWHOME/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=$LINUXBREWHOME/lib64:$LINUXBREWHOME/lib:$LD_LIBRARY_PATH
 
+source ~/.ssh/vmie.zsh
+
 unalias run-help
 autoload run-help
 HELPDIR=/home/ec2-user/.linuxbrew/share/zsh/help
