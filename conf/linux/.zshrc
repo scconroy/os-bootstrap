@@ -17,8 +17,8 @@ alias pzupdate='cd $HOME/.zprezto && git pull && git submodule update --init --r
 alias ls='ls --color=auto'
 
 ## Setup LinuxBrew
-export MANPATH="$(brew --prefix)/share/man:$MANPATH"
-export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # Brew and Pip aliases
 #alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
