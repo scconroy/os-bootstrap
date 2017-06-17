@@ -21,13 +21,14 @@ export MANPATH="$(brew --prefix)/share/man:$MANPATH"
 export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 
 # Brew and Pip aliases
-alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
+#alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
 alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Fancy ZSH Tools
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /home/linuxbrew/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source /home/linuxbrew/.linuxbrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # VMIE SSH Identities
 # source $HOME/.ssh/vmie.zsh
@@ -37,5 +38,4 @@ source /home/linuxbrew/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tool
 #HELPDIR=$HOME/.linuxbrew/share/zsh/help
 
 ######################################################
-#fpath+=( $HOME/.linuxbrew/share/zsh-navigation-tools )
-#fpath=($HOME/.linuxbrew/share/zsh-completions $fpath)
+fpath=(/home/linuxbrew/.linuxbrew/share/zsh-completions $fpath)
