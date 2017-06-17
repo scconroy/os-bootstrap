@@ -30,11 +30,11 @@ source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.
 source /home/linuxbrew/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 
 # VMIE SSH Identities
-source $HOME/.ssh/vmie.zsh
+# source $HOME/.ssh/vmie.zsh
 
-unalias run-help
-autoload run-help
-HELPDIR=$HOME/.linuxbrew/share/zsh/help
+#unalias run-help
+#autoload run-help
+#HELPDIR=$HOME/.linuxbrew/share/zsh/help
 
 ######################################################
 #fpath+=( $HOME/.linuxbrew/share/zsh-navigation-tools )
