@@ -14,25 +14,20 @@ fi
 
 # Prezto update
 alias pzupdate='cd $HOME/.zprezto && git pull && git submodule update --init --recursive && cd -'
-
-alias reload="source $HOME/.zshrc && echo 'ZSH config reloaded from $HOME/.zshrc'"
 alias ls='ls --color=auto'
 
 ## Setup LinuxBrew
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export PATH="$HOME/.linuxbrew/sbin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-export HOMEBREW_BUILD_FROM_SOURCE=1
+export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
 
 # Brew and Pip aliases
 alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
 alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # Fancy ZSH Tools
-source $HOME/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
-source $HOME/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
+source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/linuxbrew/.linuxbrew/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 
 # VMIE SSH Identities
 source $HOME/.ssh/vmie.zsh
