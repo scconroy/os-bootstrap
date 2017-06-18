@@ -45,3 +45,6 @@ sudo visudo
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
 
 EOF
+
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh
+chmod +x brew-install.sh
