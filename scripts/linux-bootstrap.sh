@@ -45,11 +45,17 @@ Edit the sudoers file and replace the line.
 sudo visudo
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
 
+vim ~/.config/znt/n-list.conf
+local border=1
+
 EOF
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh
+chmod +x brew-install.sh
 
 cat << EOF
 Now run the following command
-chmod +x brew-install.sh
+./brew-install.sh
+
+
 EOF
