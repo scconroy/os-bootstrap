@@ -37,9 +37,6 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -O ~/.zshrc
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -O ~/.zpreztorc
-
 Edit the sudoers file and replace the line.
 
 sudo visudo
@@ -50,12 +47,14 @@ local border=1
 
 EOF
 
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -O ~/.zshrc
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -O ~/.zpreztorc
+
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh
 chmod +x brew-install.sh
 
 cat << EOF
 Now run the following command
 ./brew-install.sh
-
 
 EOF
