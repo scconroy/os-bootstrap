@@ -8,9 +8,6 @@ PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' >>~/.bash_profile
 source ~/.bash_profile
 
-#sudo visudo
-#Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
-
 brew tap linuxbrew/extra
 brew install libpcap
 
@@ -51,4 +48,8 @@ Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbr
 EOF
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh
+
+cat << EOF
+Now run the following command
 chmod +x brew-install.sh
+EOF
