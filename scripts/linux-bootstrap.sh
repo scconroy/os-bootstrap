@@ -28,8 +28,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-/home/linuxbrew/.linuxbrew/bin/zsh -i -c setopt EXTENDED_GLOB
-/home/linuxbrew/.linuxbrew/bin/zsh -i -c for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}" done
+#/home/linuxbrew/.linuxbrew/bin/zsh -i -c setopt EXTENDED_GLOB
+#/home/linuxbrew/.linuxbrew/bin/zsh -i -c for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}" done
 
 cat << EOF
 Run the following commands
