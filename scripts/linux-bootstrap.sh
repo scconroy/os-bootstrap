@@ -32,6 +32,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 cat << EOF
+Run the following commands
+
 zsh | q
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -40,6 +42,8 @@ done
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -O ~/.zshrc
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -O ~/.zpreztorc
+
+Edit the sudoers file and replace the line.
 
 sudo visudo
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
