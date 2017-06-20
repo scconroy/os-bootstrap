@@ -51,7 +51,7 @@ wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -q
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -q -O ~/.zpreztorc
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/curl-format -q -O ~/curl-format
 
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh -q
 chmod +x brew-install.sh
 
 cat << EOF
