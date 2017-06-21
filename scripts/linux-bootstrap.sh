@@ -51,17 +51,16 @@ wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install
 chmod +x brew-install.sh
 
 cat << EOF
-
+####################################################
+Edit the sudoers file and replace the line.
+sudo visudo
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
+####################################################
 Logout and log back in
 vim ~/.config/znt/n-list.conf
 local border=1
 ####################################################
-Edit the sudoers file and replace the line.
-
-sudo visudo
-Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
-####################################################
 Now run the following command
 ./brew-install.sh
-
+####################################################
 EOF
