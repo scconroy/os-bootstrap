@@ -11,9 +11,3 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 #go get -u github.com/rakyll/hey
 pip install beeswithmachineguns
-
-cat << EOF
-##############################################################################################
-vim ~/.config/znt/n-list.conf
-local border=1
-EOF
