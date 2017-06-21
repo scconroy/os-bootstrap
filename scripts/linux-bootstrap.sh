@@ -27,25 +27,13 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
+touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-
-cat << EOF
-Run the following commands
-
-zsh | q
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-
-
-EOF
-
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/curl-format -q -O ~/curl-format
-
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -q -O ~/.zshrc
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -q -O ~/.zpreztorc
+
+##### Downloading Custom Stuff #####
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/curl-format -q -O ~/curl-format
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh -q
 chmod +x brew-install.sh
