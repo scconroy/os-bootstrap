@@ -28,8 +28,7 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-#/home/linuxbrew/.linuxbrew/bin/zsh -i -c setopt EXTENDED_GLOB
-#/home/linuxbrew/.linuxbrew/bin/zsh -i -c for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}" done
+/home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
 
 cat << EOF
 Run the following commands
@@ -40,14 +39,13 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-Edit the sudoers file and replace the line.
-
-sudo visudo
-Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
 
 EOF
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/curl-format -q -O ~/curl-format
+
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -q -O ~/.zshrc
+wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -q -O ~/.zpreztorc
 
 wget https://raw.githubusercontent.com/1ne/bootstrap/master/scripts/brew-install.sh -q
 chmod +x brew-install.sh
@@ -57,10 +55,12 @@ cat << EOF
 Logout and log back in
 vim ~/.config/znt/n-list.conf
 local border=1
+####################################################
+Edit the sudoers file and replace the line.
 
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/linux/.zshrc -q -O ~/.zshrc
-wget https://raw.githubusercontent.com/1ne/bootstrap/master/conf/.zpreztorc -q -O ~/.zpreztorc
-
+sudo visudo
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
+####################################################
 Now run the following command
 ./brew-install.sh
 
