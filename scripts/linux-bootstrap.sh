@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##### Configuring Basepath and Repo #####
-base_path="https://raw.githubusercontent.com/1ne/bootstrap/master"
+base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master/"
 
 ##### Updating the System #####
 sudo yum update -y
@@ -42,8 +42,8 @@ wget $base_path/conf/linux/.zshrc -q -O ~/.zshrc
 wget $base_path/conf/.zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading Custom Stuff #####
-wget $base_path/curl-format -q -O ~/curl-format
-wget $base_path/brew-install.sh -q
+wget $base_path/assets/curl-format -q -O ~/curl-format
+wget $base_path/scripts/brew-install.sh -q
 chmod +x brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
