@@ -38,8 +38,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/linux/.zshrc -q -O ~/.zshrc
-wget $base_path/conf/.zpreztorc -q -O ~/.zpreztorc
+wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
+wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading Custom Stuff #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
