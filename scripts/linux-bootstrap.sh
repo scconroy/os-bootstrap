@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo yum update -y
-sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl file git irb python-setuptools ruby mlocate golang
+sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl file git irb python-setuptools ruby mlocate golang awslogs
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
