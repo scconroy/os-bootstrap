@@ -1,5 +1,6 @@
 #!/bin/bash
 
+##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/bootstrap/master"
 
 ##### Updating the System #####
