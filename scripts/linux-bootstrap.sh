@@ -46,6 +46,15 @@ wget $base_path/assets/curl-format -q -O ~/curl-format
 wget $base_path/scripts/brew-install.sh -q
 chmod +x brew-install.sh
 
+##### Installing SSM Agent #####
+sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+sudo chkconfig amazon-ssm-agent on
+sudo start amazon-ssm-agent
+
+##### Enabling AWSLogs #####
+sudo chkconfig awslogs on
+sudo start awslogs
+
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
