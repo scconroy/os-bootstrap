@@ -13,6 +13,7 @@ key_name=${key_name##*=}
 ebs=$(curl $base_path/block-device-mapping/root/)
 vol_size=$(lsblk  --output SIZE -n -d /dev/xvda)
 vol_size=${vol_size:1:-1}
+region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
 
 #### AMI ID OverRide ####
 #ami_id="ami-643b1972"
@@ -20,7 +21,7 @@ vol_size=${vol_size:1:-1}
 #### Instance Type OverRide ####
 #instance_type="t2.micro"
 
-aws ec2 run-instances --iam-instance-profile Name=$iam_role --image-id $ami_id --count 1 --instance-type $instance_type --key-name $key_name --subnet-id $subnet_id --block-device-mappings "[ { \"DeviceName\": \"$ebs\", \"Ebs\": { \"VolumeSize\": $vol_size,  \"VolumeType\": \"gp2\", \"DeleteOnTermination\": true } } ]"
+aws ec2 run-instances --iam-instance-profile Name=$iam_role --image-id $ami_id --count 1 --instance-type $instance_type --key-name $key_name --subnet-id $subnet_id --block-device-mappings "[ { \"DeviceName\": \"$ebs\", \"Ebs\": { \"VolumeSize\": $vol_size,  \"VolumeType\": \"gp2\", \"DeleteOnTermination\": true } } ]" --region $region
 
 sleep 5
-aws ec2 describe-instances --query 'Reservations[].Instances[].[ InstanceId,[Tags[?Key==`Name`].Value][0][0],PublicIpAddress,State.Name,InstanceType,Placement.AvailabilityZone ]' --output table "$@"
+aws ec2 describe-instances --query 'Reservations[].Instances[].[ InstanceId,[Tags[?Key==`Name`].Value][0][0],PublicIpAddress,State.Name,InstanceType,Placement.AvailabilityZone ]' --output table --region $region "$@" 
