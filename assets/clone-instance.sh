@@ -15,10 +15,10 @@ vol_size=$(lsblk  --output SIZE -n -d /dev/xvda)
 vol_size=${vol_size:1:-1}
 
 #### AMI ID OverRide ####
-ami_id="ami-643b1972"
+#ami_id="ami-643b1972"
 
 #### Instance Type OverRide ####
-instance_type="t2.micro"
+#instance_type="t2.micro"
 
 aws ec2 run-instances --iam-instance-profile Name=$iam_role --image-id $ami_id --count 1 --instance-type $instance_type --key-name $key_name --subnet-id $subnet_id --block-device-mappings "[ { \"DeviceName\": \"$ebs\", \"Ebs\": { \"VolumeSize\": $vol_size,  \"VolumeType\": \"gp2\", \"DeleteOnTermination\": true } } ]"
 
