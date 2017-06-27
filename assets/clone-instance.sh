@@ -20,6 +20,13 @@ region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/documen
 
 #### Get Latest Amazon Linux AMI ID ####
 #ami_id=(aws ec2 describe-images --owners amazon --filters 'Name=name,Values=amzn-ami-hvm-????.??.?.x86_64-gp2' 'Name=state,Values=available' | jq -r '.Images | sort_by(.CreationDate) | last(.[]).ImageId')
+#ami_id=(aws ec2 describe-images --owners amazon --filters \
+#    'Name=name,Values=amzn-ami-hvm-????.??.?.????????-x86_64-gp2' \
+#    'Name=state,Values=available' \
+#    'Name=architecture,Values=x86_64' \
+#    'Name=virtualization-type,Values=hvm' \
+#    'Name=root-device-type,Values=ebs' \
+#  --query 'sort_by(Images, &CreationDate)[-1].ImageId')
 
 #### Instance Type OverRide ####
 #instance_type="t2.micro"
