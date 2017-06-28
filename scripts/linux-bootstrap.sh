@@ -55,6 +55,8 @@ wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 wget $base_path/assets/curl-format -q -O ~/curl-format
 wget $base_path/scripts/brew-install.sh -q
 chmod +x brew-install.sh
+sudo wget https://raw.githubusercontent.com/1ne/os-bootstrap/master/assets/ls-instances -q -O /usr/bin/ls-instances
+sudo chmod 777 /usr/bin/ls-instances
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
