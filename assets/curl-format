@@ -15,7 +15,7 @@
     Total Connections Made  :  %{num_connects}\n
            Total Redirects  :  %{num_redirects}\n
         HTTP Response Code  :  %{http_code}\n
-          SSL Verification  :  %{ssl_verify_result}\n\n
+          SSL Verification  :  %{ssl_verify_result} (Zero implies success)\n\n
 
            Local IP & Port  :  %{local_ip}:%{local_port}\n
           Remote IP & Port  :  %{remote_ip}:%{remote_port}\n
