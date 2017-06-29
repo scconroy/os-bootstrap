@@ -2,11 +2,11 @@
       Name Resolution Time  :  %{time_namelookup}\n
        TCP Connection Time  :  %{time_connect}\n
         SSL Handshake Time  :  %{time_appconnect}\n
-   File transfer begin Time :  %{time_pretransfer}\n
+  File transfer begin Time  :  %{time_pretransfer}\n
      Time for Redirections  :  %{time_redirect}\n
          Start of Transfer  :  %{time_starttransfer}\n
                             ----------------\n
-                 time_total :  %{time_total}\n
+                Total Time  :  %{time_total}\n
                             ----------------\n\n
 
              Download Size  :  %{size_download}\n
