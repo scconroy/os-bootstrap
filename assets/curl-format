@@ -13,6 +13,7 @@
             Download Speed  :  %{speed_download}\n
                Header Size  :  %{size_header}\n
     Total Connections Made  :  %{num_connects}\n
+           Total Redirects  :  %{num_redirects}\n
         HTTP Response Code  :  %{http_code}\n
           SSL Verification  :  %{ssl_verify_result}\n\n
 
