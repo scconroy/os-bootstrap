@@ -1,7 +1,7 @@
 #!/bin/bash
 
 brew install awscli aws-shell binutils bzip2 coreutils curl wget findutils gawk git ipbt ipv6calc ipv6toolkit ip_relay jq libbsd libssh2 mysql valgrind
-brew install nano nmap openssh openssl pv python python3 pip-completion brew-pip redis rsync ruby screen sshrc strace unzip whois xz 
+brew install nano nmap openssh openssl pv python python3 pip-completion brew-pip redis rsync ruby s3cmd screen sshrc strace unzip whois xz 
 
 brew install bsdmainutils fping htop iftop iotop ioping procps sysstat tcpdump tcpstat twoping netcat ncdu
 brew install arping dhcping dns2tcp dnsmap dnsperf dnstracer fio iperf3 liboping mtr stress sysbench tcptraceroute
