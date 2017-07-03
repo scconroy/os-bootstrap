@@ -38,4 +38,4 @@ Host *
     ForwardAgent yes
     Port 22
     User ec2-user
-    IdentityFile ~/.ssh/ec2-anupam-iad.pem
+    IdentityFile ~/.ssh/ec2-anupam.pem
