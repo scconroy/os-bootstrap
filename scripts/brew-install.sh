@@ -8,6 +8,8 @@ brew install arping dhcping dns2tcp dnsmap dnsperf dnstracer fio iperf3 liboping
 
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
+#https://raw.githubusercontent.com/1ne/os-bootstrap/master/assets/toprc
+
 sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 #go get -u github.com/rakyll/hey
 pip install beeswithmachineguns
