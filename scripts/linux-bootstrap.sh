@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##### Configuring Basepath and Repo #####
-base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master/"
+base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
 ##### Updating the System #####
 sudo yum update -y
