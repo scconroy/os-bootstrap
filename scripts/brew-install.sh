@@ -14,7 +14,7 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 ##### Configuring toprc and htoprc #####
 wget $base_path/assets/toprc -q -O ~/.toprc
 mkdir -p ~/.config/htop/
-wget $base_path/assets/toprc -q -O ~/.config/htop/htoprc
+wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Installing Monitoring Tools #####
