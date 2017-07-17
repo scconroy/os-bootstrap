@@ -70,6 +70,9 @@ sudo chmod 777 /usr/bin/clone-instance
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
+sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
+sudo sed -i 's/localhost\.localdomain/amazon/' /etc/sysconfig/network
+
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
