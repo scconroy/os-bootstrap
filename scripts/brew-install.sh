@@ -18,4 +18,4 @@ sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 #go get -u github.com/rakyll/hey
 pip install glances
 pip install beeswithmachineguns
-sudo wget $base_path/assets/toprc ~/.toprc
+wget $base_path/assets/toprc ~/.toprc
