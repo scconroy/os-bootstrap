@@ -12,9 +12,9 @@ brew install arping dhcping dns2tcp dnsmap dnsperf dnstracer fio iperf3 liboping
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
 ##### Configuring toprc and htoprc #####
-wget $base_path/assets/toprc -O ~/.toprc
+wget $base_path/assets/toprc -q -O ~/.toprc
 mkdir -p ~/.config/htop/
-wget $base_path/assets/toprc -O ~/.config/htop/htoprc
+wget $base_path/assets/toprc -q -O ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Installing Monitoring Tools #####
