@@ -66,6 +66,10 @@ sudo chmod 777 /usr/bin/ciphers-test
 sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
 
+##### Setting Brew Path #####
+sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
+sudo chmod 440 /etc/sudoers.d/brew-path
+
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
