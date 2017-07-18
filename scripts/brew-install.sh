@@ -31,8 +31,6 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
-
-
 ##### Installing Monitoring Tools #####
 pip install glances
 sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
