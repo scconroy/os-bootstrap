@@ -70,7 +70,7 @@ sudo chmod 777 /usr/bin/clone-instance
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
-##### Setting Hostname #####
+##### Setting Hostname to Amazon #####
 sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
 sudo sed -i 's/localhost\.localdomain/amazon/' /etc/sysconfig/network
 
@@ -82,12 +82,3 @@ Now run the following command
 time ./brew-install.sh
 ####################################################
 EOF
-
-####################################################
-# Edit the sudoers file and replace the line.
-# sudo visudo
-# Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
-####################################################
-#vim ~/.config/znt/n-list.conf
-#local border=1
-####################################################
