@@ -27,13 +27,21 @@ sudo mkdir -p $root_home/.config/htop/
 sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
+##### Installing libpcap first as its a dependency for other Utilities ####
+brew install libpcap
+
 ##### Installing AWS Utilities ####
 brew install python python3 ruby pip-completion brew-pip 
-brew install awscli aws-shell s3cmd 
+brew install awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
+
+##### Installing Network Utilities ####
+brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
+brew install arping fping liboping twoping httpstat ipv6calc ipv6toolkit ip_relay
+brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
@@ -44,11 +52,6 @@ brew install redis
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio dc3dd ddrescue
-
-##### Installing Network Utilities ####
-brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
-brew install arping fping liboping twoping httpstat ipv6calc ipv6toolkit ip_relay
-brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping  
 
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
