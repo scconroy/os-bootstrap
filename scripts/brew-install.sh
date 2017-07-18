@@ -25,6 +25,10 @@ sudo chmod 644 $root_home/.config/htop/htoprc
 brew install python python3 ruby pip-completion brew-pip 
 brew install awscli aws-shell s3cmd 
 
+##### Configuring AWS CLI Config #####
+mkdir ~/.aws
+wget $base_path/assets/aws-config -q -O ~/.aws/config
+
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
 brew install stress sysbench
