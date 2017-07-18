@@ -82,3 +82,4 @@ Now run the following command
 time ./brew-install.sh
 ####################################################
 EOF
+sudo reboot
