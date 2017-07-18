@@ -74,20 +74,20 @@ sudo chmod 440 /etc/sudoers.d/brew-path
 sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
 sudo sed -i 's/localhost\.localdomain/amazon/' /etc/sysconfig/network
 
-####################################################
-# Edit the sudoers file and replace the line.
-# sudo visudo
-# Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
-####################################################
-
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
-####################################################
-Logout and log back in
-vim ~/.config/znt/n-list.conf
-local border=1
 ####################################################
 Now run the following command
 ./brew-install.sh
 ####################################################
 EOF
+
+####################################################
+# Edit the sudoers file and replace the line.
+# sudo visudo
+# Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
+####################################################
+#Logout and log back in
+#vim ~/.config/znt/n-list.conf
+#local border=1
+####################################################
