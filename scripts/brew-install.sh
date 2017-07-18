@@ -8,6 +8,12 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
 ########## Installing Utilities #########
 
+##### Configuring toprc and htoprc #####
+wget $base_path/assets/toprc -q -O ~/.toprc
+mkdir -p ~/.config/htop/
+wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
+chmod 644 ~/.config/htop/htoprc
+
 ##### Installing OS Utilities ####
 brew install htop procps sysstat
 brew install stress sysbench
@@ -25,11 +31,7 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
-##### Configuring toprc and htoprc #####
-wget $base_path/assets/toprc -q -O ~/.toprc
-mkdir -p ~/.config/htop/
-wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
-chmod 644 ~/.config/htop/htoprc
+
 
 ##### Installing Monitoring Tools #####
 pip install glances
