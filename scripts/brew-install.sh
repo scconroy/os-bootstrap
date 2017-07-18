@@ -21,12 +21,16 @@ sudo mkdir -p $root_home/.config/htop/
 sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
-##### Installing OS Utilities ####
-brew install htop procps sysstat
-brew install stress sysbench
-brew install binutils coreutils curl wget bsdmainutils bzip2 findutils gawk git ipbt jq libbsd libssh2 mysql valgrind
-brew install nano openssh openssl pv python python3 ruby pip-completion brew-pip redis rsync screen sshrc strace unzip xz
+##### Installing AWS Utilities ####
+brew install python python3 ruby pip-completion brew-pip 
 brew install awscli aws-shell s3cmd 
+
+##### Installing OS Utilities ####
+brew install htop procps sysstat 
+brew install stress sysbench
+brew install binutils coreutils strace curl wget gawk git nano jq findutils bsdmainutils libbsd valgrind pv
+brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz
+brew install redis
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio
