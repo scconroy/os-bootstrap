@@ -14,11 +14,19 @@ mkdir -p ~/.config/htop/
 wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
+root_home=$(eval echo "~root")
+
+sudo wget $base_path/assets/toprc -q -O $root_home/.toprc
+sudo mkdir -p $root_home/.config/htop/
+sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
+sudo chmod 644 $root_home/.config/htop/htoprc
+
 ##### Installing OS Utilities ####
 brew install htop procps sysstat
 brew install stress sysbench
-brew install awscli aws-shell binutils coreutils curl wget bsdmainutils bzip2 findutils gawk git ipbt jq libbsd libssh2 mysql valgrind
-brew install nano openssh openssl pv python python3 pip-completion brew-pip redis rsync ruby s3cmd screen sshrc strace unzip xz
+brew install binutils coreutils curl wget bsdmainutils bzip2 findutils gawk git ipbt jq libbsd libssh2 mysql valgrind
+brew install nano openssh openssl pv python python3 ruby pip-completion brew-pip redis rsync screen sshrc strace unzip xz
+brew install awscli aws-shell s3cmd 
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio
