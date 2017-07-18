@@ -1,5 +1,11 @@
 #!/bin/bash
 
+##### Make sure only non-root is running the script #####
+if [ "$(id -u)" == "0" ]; then
+   echo "This script must NOT be run as root. Please run as normal user" 1>&2
+   exit 1
+fi
+
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
