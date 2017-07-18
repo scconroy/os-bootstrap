@@ -3,12 +3,25 @@
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
-brew install awscli aws-shell binutils bzip2 coreutils curl wget findutils gawk git ipbt ipv6calc ipv6toolkit ip_relay jq libbsd libssh2 mysql valgrind
-brew install nano nmap openssh openssl pv python python3 pip-completion brew-pip redis rsync ruby s3cmd screen sshrc strace unzip whois xz 
+##### Configuring ZSH Reverse Search #####
+sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
-brew install bsdmainutils fping htop iftop iotop ioping procps sysstat tcpdump tcpstat twoping netcat nethogs ncdu ifstat httpstat
-brew install arping dhcping dns2tcp dnsmap dnsperf dnstracer fio iperf3 liboping mtr stress sysbench tcptraceroute dnstop jnettop
+##### Installing Utilities ####
 
+##### Installing OS Utilities ####
+brew install htop procps sysstat
+brew install stress sysbench
+brew install awscli aws-shell binutils coreutils curl wget bsdmainutils bzip2 findutils gawk git ipbt jq libbsd libssh2 mysql valgrind
+brew install nano nmap openssh openssl pv python python3 pip-completion brew-pip redis rsync ruby s3cmd screen sshrc strace unzip xz
+
+##### Installing Disk Utilities ####
+brew install iotop ioping ncdu fio
+
+##### Installing Network Utilities ####
+brew install whois fping iftop tcpdump tcpstat twoping netcat nethogs ifstat httpstat ipv6calc ipv6toolkit ip_relay
+brew install arping dhcping dns2tcp dnsmap dnsperf dnstracer iperf3 liboping mtr tcptraceroute dnstop jnettop
+
+##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
 ##### Configuring toprc and htoprc #####
@@ -21,5 +34,5 @@ chmod 644 ~/.config/htop/htoprc
 pip install glances
 sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 
-##### Installing Benchmarking Tools #####
+##### Installing Web-Benchmarking Tools #####
 pip install beeswithmachineguns
