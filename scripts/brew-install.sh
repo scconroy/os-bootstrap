@@ -32,12 +32,12 @@ wget $base_path/assets/aws-config -q -O ~/.aws/config
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
 brew install stress sysbench
-brew install binutils coreutils strace curl wget gawk git nano jq findutils bsdmainutils libbsd valgrind pv
-brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz
+brew install binutils coreutils strace curl wget gawk git nano jq findutils ddate bsdmainutils libbsd valgrind pv
+brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
 
 ##### Installing Disk Utilities ####
-brew install iotop ioping ncdu fio
+brew install iotop ioping ncdu fio dc3dd ddrescue
 
 ##### Installing Network Utilities ####
 brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
@@ -52,4 +52,5 @@ pip install glances
 sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 
 ##### Installing Web-Benchmarking Tools #####
+pip install six
 pip install beeswithmachineguns
