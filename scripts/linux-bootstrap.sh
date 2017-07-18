@@ -3,6 +3,11 @@
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
+##### Setting Hostname to Amazon #####
+hostname="amazon"
+sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
+sudo sed -i "s/localhost\.localdomain/$hostname/" /etc/sysconfig/network
+
 ##### Updating the System #####
 sudo yum update -y
 sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl file git irb python-setuptools ruby mlocate golang awslogs
@@ -26,7 +31,6 @@ chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
 ##### Tapping Brew Extras #####
 brew tap linuxbrew/extra
-brew install libpcap
 
 ##### Installing the Shells and Plugins #####
 brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
@@ -70,16 +74,13 @@ sudo chmod 777 /usr/bin/clone-instance
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
-##### Setting Hostname to Amazon #####
-sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
-sudo sed -i 's/localhost\.localdomain/amazon/' /etc/sysconfig/network
-
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
-Logout and log back in
-Now run the following command
+The instance will reboot and kick you out. Please login back and run the following command
 time ./brew-install.sh
 ####################################################
 EOF
+
+##### Rebooting Box #####
 sudo reboot
