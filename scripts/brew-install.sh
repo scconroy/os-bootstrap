@@ -34,6 +34,10 @@ brew install libpcap
 brew install python python3 ruby pip-completion brew-pip 
 brew install awscli aws-shell awsebcli awslogs s3cmd
 
+##### Setting up Linux Monintoring Scripts ####
+pip install cloudwatchmon
+(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units megabytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units megabytes --disk-inode-util --from-cron") | crontab -
+
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
