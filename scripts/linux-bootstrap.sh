@@ -77,17 +77,17 @@ sudo sed -i 's/localhost\.localdomain/amazon/' /etc/sysconfig/network
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
+Logout and log back in
 Now run the following command
-./brew-install.sh
+time ./brew-install.sh
 ####################################################
 EOF
-exit
+
 ####################################################
 # Edit the sudoers file and replace the line.
 # sudo visudo
 # Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
 ####################################################
-#Logout and log back in
 #vim ~/.config/znt/n-list.conf
 #local border=1
 ####################################################
