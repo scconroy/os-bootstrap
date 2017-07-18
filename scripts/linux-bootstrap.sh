@@ -81,7 +81,7 @@ Now run the following command
 ./brew-install.sh
 ####################################################
 EOF
-
+exit
 ####################################################
 # Edit the sudoers file and replace the line.
 # sudo visudo
