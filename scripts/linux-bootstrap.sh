@@ -9,10 +9,25 @@ fi
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
+##### Defining the Confirm function #####
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure you want set Hostname to $hostname? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
 ##### Setting Hostname to Amazon #####
-hostname="amazon"
+read -p "Enter your Hostname (Press enter for amazon): " hostname
+hostname=${hostname:-amazon}
 sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
-sudo sed -i "s/localhost\.localdomain/$hostname/" /etc/sysconfig/network
+confirm && sudo sed -i "s/localhost\.localdomain/$hostname/" /etc/sysconfig/network
 
 ##### Updating the System #####
 sudo yum update -y
