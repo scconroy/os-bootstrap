@@ -66,4 +66,5 @@ sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 
 ##### Installing Web-Benchmarking Tools #####
 pip install six bottle
+go get -u github.com/rakyll/hey
 pip install beeswithmachineguns
