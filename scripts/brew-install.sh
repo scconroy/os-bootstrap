@@ -34,18 +34,13 @@ brew install libpcap
 brew install python python3 ruby pip-completion brew-pip 
 brew install awscli aws-shell awsebcli awslogs s3cmd
 
-##### Setting up Linux Monintoring Scripts ####
-pip install cloudwatchmon
-(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units megabytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units megabytes --disk-inode-util --from-cron") | crontab -
-
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
-##### Installing Network Utilities ####
-brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
-brew install arping fping liboping twoping httpstat ipv6calc ipv6toolkit ip_relay
-brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
+##### Setting up Linux Monintoring Scripts ####
+pip install cloudwatchmon
+(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units megabytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units megabytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
@@ -56,6 +51,11 @@ brew install redis
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio dc3dd ddrescue
+
+##### Installing Network Utilities ####
+brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
+brew install arping fping liboping twoping httpstat ipv6calc ipv6toolkit ip_relay
+brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
