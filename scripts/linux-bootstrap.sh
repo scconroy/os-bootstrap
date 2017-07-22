@@ -95,6 +95,13 @@ sudo chmod 777 /usr/bin/clone-instance
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
+##### Giving user SuperPowers #####
+echo 'fs.file-max = 256000' | sudo tee /etc/sysctl.d/60-file-max.conf
+echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
+echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
