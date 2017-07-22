@@ -46,7 +46,7 @@ pip3 install cloudwatchmon
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
 brew install stress sysbench
-brew install binutils coreutils strace valgrind curl wget gawk git nano jq findutils ddate bsdmainutils libbsd pv
+brew install binutils coreutils strace valgrind curl wget gawk git nano jq findutils ddate bsdmainutils libbsd pv peco
 brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
 
