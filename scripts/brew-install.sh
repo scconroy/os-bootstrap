@@ -77,3 +77,7 @@ pip install six bottle
 pip install beeswithmachineguns
 go get -u github.com/rakyll/hey
 go get -u github.com/tsenart/vegeta
+
+##### Other Web-Benchmarking Tools #####
+# https://github.com/denji/awesome-http-benchmark
+# https://github.com/davidsonfellipe/awesome-wpo
