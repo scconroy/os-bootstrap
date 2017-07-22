@@ -96,6 +96,11 @@ sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
+cat << EOF
+####################################################
+Setting the Open file limits on the Box
+####################################################
+EOF
 echo 'fs.file-max = 256000' | sudo tee /etc/sysctl.d/60-file-max.conf
 echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
 echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
