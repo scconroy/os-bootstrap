@@ -41,7 +41,7 @@ wget $base_path/assets/aws-config -q -O ~/.aws/config
 ##### Setting up Linux Monintoring Scripts ####
 sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
 pip3 install cloudwatchmon
-(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units megabytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units megabytes --disk-inode-util --from-cron") | crontab -
+(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
 brew install htop procps sysstat 
