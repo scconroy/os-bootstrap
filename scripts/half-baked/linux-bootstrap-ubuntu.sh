@@ -31,7 +31,7 @@ sudo hostnamectl set-hostname $hostname
 ##### Updating the System #####
 sudo apt update
 sudo apt upgrade
-sudo apt install build-essential jq curl ruby file mlocate golang git irb python-setuptools ruby -y
+sudo apt install build-essential jq curl ruby file mlocate binutils coreutils golang git irb python-setuptools ruby -y
 
 ##### Enabling AWSLogs #####
 region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -c -r .region)
@@ -107,6 +107,20 @@ echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.co
 echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+
+cat << EOF
+####################################################
+Setting the Open file limits on the Box
+####################################################
+sudo python /usr/share/bcc/examples/hello_world.py
+sudo python /usr/share/bcc/examples/tracing/task_switch.py
+EOF
+
+git clone https://github.com/svinota/pyroute2
+cd pyroute2; sudo make install
+sudo python /usr/share/bcc/examples/networking/simple_tc.py
+cd.. && rm -rf pyroute2
+cd
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
