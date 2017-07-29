@@ -23,6 +23,9 @@ confirm() {
     esac
 }
 
+##### Adding User to sudoers #####
+echo "$username ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/$username
+
 ##### Setting Hostname to Amazon #####
 read -p "Enter your Hostname (Press enter for ubuntu): " hostname
 hostname=${hostname:-ubuntu}
@@ -108,6 +111,11 @@ echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit
 echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 
+##### Installing bcc tools #####
+echo "deb [trusted=yes] https://repo.iovisor.org/apt/xenial xenial-nightly main" | sudo tee /etc/apt/sources.list.d/iovisor.list
+sudo apt-get update
+sudo apt-get install bcc bcc-tools libbcc-examples python-bcc
+
 cat << EOF
 ####################################################
 Setting the Open file limits on the Box
@@ -116,6 +124,7 @@ sudo python /usr/share/bcc/examples/hello_world.py
 sudo python /usr/share/bcc/examples/tracing/task_switch.py
 EOF
 
+##### Installing pyroute2 #####
 git clone https://github.com/svinota/pyroute2
 cd pyroute2; sudo make install
 sudo python /usr/share/bcc/examples/networking/simple_tc.py
