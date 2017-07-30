@@ -35,11 +35,7 @@ sudo hostnamectl set-hostname $hostname
 ##### Updating the System #####
 sudo apt update
 sudo apt upgrade -y
-sudo apt install build-essential jq curl ruby file mlocate binutils coreutils git irb python-setuptools ruby -y
-
-echo | sudo add-apt-repository ppa:longsleep/golang-backports
-sudo apt update
-sudo apt install -y golang-go
+sudo apt install build-essential jq curl ruby file mlocate binutils coreutils git irb python-setuptools ruby golang-1.8-go -y
 
 ##### Enabling AWSLogs #####
 region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -c -r .region)
@@ -133,7 +129,7 @@ EOF
 ##### Installing pyroute2 #####
 git clone https://github.com/svinota/pyroute2
 cd pyroute2; sudo make install
-sudo python /usr/share/bcc/examples/networking/simple_tc.py
+#sudo python /usr/share/bcc/examples/networking/simple_tc.py
 cd .. && sudo rm -rf pyroute2
 
 ##### Print Additonal ToDo Stuff #####
