@@ -114,8 +114,8 @@ echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 
 ##### Installing bcc tools #####
 echo "deb [trusted=yes] https://repo.iovisor.org/apt/xenial xenial-nightly main" | sudo tee /etc/apt/sources.list.d/iovisor.list
-sudo apt-get update
-sudo apt-get install bcc bcc-tools libbcc-examples python-bcc
+sudo apt update
+sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
 
 cat << EOF
 ####################################################
@@ -129,7 +129,7 @@ EOF
 git clone https://github.com/svinota/pyroute2
 cd pyroute2; sudo make install
 sudo python /usr/share/bcc/examples/networking/simple_tc.py
-cd.. && rm -rf pyroute2
+cd .. && rm -rf pyroute2
 cd
 
 ##### Print Additonal ToDo Stuff #####
