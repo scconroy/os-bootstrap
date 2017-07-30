@@ -120,7 +120,7 @@ echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 ##### Installing bcc tools #####
 echo "deb [trusted=yes] https://repo.iovisor.org/apt/xenial xenial-nightly main" | sudo tee /etc/apt/sources.list.d/iovisor.list
 sudo apt update
-sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
+#sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
 
 cat << EOF
 ####################################################
@@ -144,5 +144,6 @@ time ./brew-install-ubuntu.sh
 ####################################################
 EOF
 
+sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
 ##### Rebooting Box #####
 sudo reboot
