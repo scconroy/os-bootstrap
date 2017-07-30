@@ -66,11 +66,11 @@ pip install glances
 #sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 
 ##### Installing Sysdig Monitoring Tools #####
-#sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-#sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-#sudo rpm -i http://mirror.us.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
-#sudo yum -y install kernel-devel-$(uname -r)
-#sudo yum -y install sysdig
+sudo curl -s https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public | apt-key add -
+sudo curl -s -o /etc/apt/sources.list.d/draios.list http://download.draios.com/stable/deb/draios.list
+sudo apt update
+sudo apt -y install linux-headers-$(uname -r)
+sudo apt -y install sysdig
 
 ##### Installing Web-Benchmarking Tools #####
 pip install six bottle
