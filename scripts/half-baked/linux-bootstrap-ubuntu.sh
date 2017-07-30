@@ -45,6 +45,7 @@ sudo apt install -y golang-go
 region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -c -r .region)
 curl https://s3.amazonaws.com//aws-cloudwatch/downloads/latest/awslogs-agent-setup.py -O
 sudo python ./awslogs-agent-setup.py --region $region
+rm -f awslogs-agent-setup.py
 
 ##### Installing SSM Agent #####	
 wget https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb
@@ -88,7 +89,7 @@ wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 ##### Downloading the next Script #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
 wget $base_path/scripts/half-baked/brew-install-ubuntu.sh -q
-chmod +x brew-install.sh
+chmod +x brew-install-ubuntu.sh
 
 ##### Downloading Custom Utils #####
 sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
@@ -133,8 +134,7 @@ EOF
 git clone https://github.com/svinota/pyroute2
 cd pyroute2; sudo make install
 sudo python /usr/share/bcc/examples/networking/simple_tc.py
-cd .. && rm -rf pyroute2
-cd ~
+cd .. && sudo rm -rf pyroute2
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
