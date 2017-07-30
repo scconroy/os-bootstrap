@@ -34,12 +34,12 @@ sudo hostnamectl set-hostname $hostname
 
 ##### Updating the System #####
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 sudo apt install build-essential jq curl ruby file mlocate binutils coreutils git irb python-setuptools ruby -y
 
-sudo add-apt-repository ppa:longsleep/golang-backports
+echo | sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
-sudo apt install golang-go
+sudo apt install -y golang-go
 
 ##### Enabling AWSLogs #####
 region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -c -r .region)
