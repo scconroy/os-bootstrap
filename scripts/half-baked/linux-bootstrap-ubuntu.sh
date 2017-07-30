@@ -87,7 +87,7 @@ wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading the next Script #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
-wget $base_path/scripts/brew-install.sh -q
+wget $base_path/scripts/half-baked/brew-install-ubuntu.sh -q
 chmod +x brew-install.sh
 
 ##### Downloading Custom Utils #####
@@ -140,7 +140,7 @@ cd ~
 cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following command
-time ./brew-install.sh
+time ./brew-install-ubuntu.sh
 ####################################################
 EOF
 
