@@ -24,8 +24,8 @@ confirm() {
 }
 
 ##### Adding User to sudoers #####
-username=$USER
-echo "ubuntu ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/ubuntu
+#username=$USER
+#echo "ubuntu ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/ubuntu
 
 ##### Setting Hostname to Amazon #####
 read -p "Enter your Hostname (Press enter for ubuntu): " hostname
