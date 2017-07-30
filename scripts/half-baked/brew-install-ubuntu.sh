@@ -39,7 +39,7 @@ mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
 ##### Setting up Linux Monintoring Scripts ####
-sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
+sudo chown -R ubuntu:ubuntu /home/ubuntu/.cache/
 pip3 install cloudwatchmon
 (crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
@@ -63,14 +63,14 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 
 ##### Installing Monitoring Tools #####
 pip install glances
-sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
+#sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 
 ##### Installing Sysdig Monitoring Tools #####
-sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i http://mirror.us.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
-sudo yum -y install kernel-devel-$(uname -r)
-sudo yum -y install sysdig
+#sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+#sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
+#sudo rpm -i http://mirror.us.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
+#sudo yum -y install kernel-devel-$(uname -r)
+#sudo yum -y install sysdig
 
 ##### Installing Web-Benchmarking Tools #####
 pip install six bottle
