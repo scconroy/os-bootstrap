@@ -57,9 +57,9 @@ brew tap linuxbrew/extra
 brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
-sudo echo '/home/linuxbrew/.linuxbrew/bin/bash'>> /etc/shells
-sudo echo '/home/linuxbrew/.linuxbrew/bin/zsh'>> /etc/shells
-sudo echo '/home/linuxbrew/.linuxbrew/bin/fish'>> /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/zsh' | sudo tee -a /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
 ##### Chainging User Shells #####
 #chsh -s /usr/local/bin/bash $USER
