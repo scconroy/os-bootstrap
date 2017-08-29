@@ -31,19 +31,17 @@ wget $base_path/conf/mac/zshrc -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading the next Script #####
-wget $base_path/assets/curl-format -q -O ~/curl-format
 wget $base_path/scripts/brew-install.sh -q
 chmod +x brew-install.sh
 
 ##### Downloading Custom Utils #####
+wget $base_path/assets/curl-format -q -O ~/curl-format
 sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
 sudo wget $base_path/assets/ls-instances-all -q -O /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
 sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
-sudo chmod 777 /usr/bin/clone-instance
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
