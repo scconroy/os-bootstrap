@@ -36,12 +36,12 @@ chmod +x brew-install.sh
 
 ##### Downloading Custom Utils #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
-sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
-sudo chmod 777 /usr/bin/ls-instances
-sudo wget $base_path/assets/ls-instances-all -q -O /usr/bin/ls-instances-all
-sudo chmod 777 /usr/bin/ls-instances-all
-sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
-sudo chmod 777 /usr/bin/ciphers-test
+sudo wget $base_path/assets/ls-instances -q -O /usr/local/bin/ls-instances
+sudo chmod 777 /usr/local/bin/ls-instances
+sudo wget $base_path/assets/ls-instances-all -q -O /usr/local/bin/ls-instances-all
+sudo chmod 777 /usr/local/bin/ls-instances-all
+sudo wget $base_path/assets/ciphers-test -q -O /usr/local/bin/ciphers-test
+sudo chmod 777 /usr/local/bin/ciphers-test
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
