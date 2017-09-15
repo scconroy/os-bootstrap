@@ -51,7 +51,7 @@ brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
 
 ##### Installing Disk Utilities ####
-brew install iotop ioping ncdu fio dc3dd ddrescue
+brew install iotop ioping ncdu fio dc3dd ddrescue iozone
 
 ##### Installing Network Utilities ####
 brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
