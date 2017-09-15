@@ -14,12 +14,13 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
 ########## Installing Utilities #########
 
-##### Configuring toprc and htoprc #####
+##### Configuring toprc and htoprc for current User #####
 wget $base_path/assets/toprc -q -O ~/.toprc
 mkdir -p ~/.config/htop/
 wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
+##### Configuring toprc and htoprc for root User #####
 root_home=$(eval echo "~root")
 
 sudo wget $base_path/assets/toprc -q -O $root_home/.toprc
@@ -68,7 +69,7 @@ sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
 ##### Installing Sysdig Monitoring Tools #####
 sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
 sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i http://mirror.us.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
+sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
 
