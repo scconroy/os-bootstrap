@@ -13,7 +13,7 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ##### Installing the Shells and Plugins #####
-brew install git wget
+brew install git wget axel
 brew cask install iterm
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting 
 
