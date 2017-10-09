@@ -13,14 +13,18 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ##### Installing the Shells and Plugins #####
-brew install git wget axel
-brew cask install iterm google-chrome keka flycut
+brew install git wget axel curl
+brew cask install iterm2 google-chrome keka flycut
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting 
 
 ##### Adding Shells to list #####
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
 echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells
 echo '/usr/local/bin/fish' | sudo tee -a /etc/shells
+
+##### Making ZSH the deafult Shell #####
+sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+dscl . -read /Users/$USER UserShell
 
 ##### Adding nanorc to config #####
 #curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
