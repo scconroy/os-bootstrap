@@ -15,10 +15,9 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 ########## Installing Utilities #########
 
 ##### Configuring toprc and htoprc #####
-wget $base_path/assets/toprc -q -O ~/.toprc
-mkdir -p ~/.config/htop/
-wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
-chmod 644 ~/.config/htop/htoprc
+#mkdir -p ~/.config/htop/
+#wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
+#chmod 644 ~/.config/htop/htoprc
 
 ##### Installing libpcap first as its a dependency for other Utilities ####
 brew install libpcap
@@ -33,7 +32,7 @@ wget $base_path/assets/aws-config -q -O ~/.aws/config
 
 ##### Installing OS Utilities ####
 brew install htop
-brew install binutils coreutils valgrind curl gawk nano jq findutils ddate pv peco
+brew install binutils coreutils valgrind gawk nano jq findutils ddate pv peco
 brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zip
 
 ##### Installing Network Utilities ####
