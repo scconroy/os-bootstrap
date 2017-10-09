@@ -32,10 +32,9 @@ mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
 ##### Installing OS Utilities ####
-brew install htop procps
+brew install htop
 brew install binutils coreutils valgrind curl gawk nano jq findutils ddate pv peco
-brew install openssh libssh2 sshrc openssl openssh rsync screen unzip bzip2 xz ddar p7zip
-brew cask install keka
+brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zip
 
 ##### Installing Network Utilities ####
 brew install tcpdump tcpstat jnettop mtr tcptraceroute netcat nmap iperf3 whois arping fping liboping httpstat ipv6calc
@@ -45,3 +44,6 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 
 ##### Installing Monitoring Tools #####
 pip3 install glances
+
+##### Installing Amazon Tools #####
+brew cask install amazon-chime amazon-workdocs amazon-workspaces
