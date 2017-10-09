@@ -14,7 +14,7 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
 ##### Installing the Shells and Plugins #####
 brew install git wget axel
-brew cask install iterm
+brew cask install iterm google-chrome keka flycut
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting 
 
 ##### Adding Shells to list #####
@@ -32,10 +32,6 @@ touch ~/.zshrc
 wget $base_path/conf/mac/zshrc -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
-##### Downloading the next Script #####
-#wget $base_path/scripts/brew-install.sh -q
-#chmod +x brew-install.sh
-
 ##### Downloading Custom Utils #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
 sudo wget $base_path/assets/ls-instances -q -O /usr/local/bin/ls-instances
@@ -45,10 +41,16 @@ sudo chmod 777 /usr/local/bin/ls-instances-all
 sudo wget $base_path/assets/ciphers-test -q -O /usr/local/bin/ciphers-test
 sudo chmod 777 /usr/local/bin/ciphers-test
 
+##### Downloading the next Script #####
+wget $base_path/scripts/brew-install-mac.sh -q
+chmod +x brew-install-mac.sh
+
 ##### Print Additonal ToDo Stuff #####
-#cat << EOF
+cat << EOF
 ####################################################
-#The instance will reboot and kick you out. Please login back and run the following command
-#time ./brew-install.sh
+The shell will close and kick you out. Please open iTerm2 and run the following
+time ./brew-install-mac.sh
 ####################################################
-#EOF
+EOF
+
+exit
