@@ -15,7 +15,8 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
 brew cask install iterm2 google-chrome keka flycut
-brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting 
+brew cask install atext sublime-text-dev google-play-music-desktop-player caskroom/drivers/logitech-options
+brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
@@ -56,5 +57,3 @@ The shell will close and kick you out. Please open iTerm2 and run the following
 time ./brew-install-mac.sh
 ####################################################
 EOF
-
-exit
