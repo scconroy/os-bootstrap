@@ -31,8 +31,7 @@ mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
 ##### Installing OS Utilities ####
-brew install htop
-brew install binutils coreutils valgrind gawk nano jq findutils ddate pv peco
+brew install htop valgrind gawk nano jq findutils ddate pv peco
 brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zip
 
 ##### Installing Network Utilities ####
