@@ -15,7 +15,7 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
 brew cask install iterm2 google-chrome firefox keka flycut
-#brew cask install firefox atext sublime-text-dev google-play-music-desktop-player typora microsoft-remote-desktop-beta applepi-baker caskroom/drivers/logitech-options
+# brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
