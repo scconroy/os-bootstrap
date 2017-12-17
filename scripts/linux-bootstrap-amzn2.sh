@@ -42,6 +42,12 @@ sudo systemctl enable amazon-ssm-agent
 sudo systemctl start  amazon-ssm-agent
 sudo systemctl status amazon-ssm-agent
 
+##### Installing atop #####
+sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
+sudo systemctl enable atop
+sudo systemctl start  atop
+sudo systemctl status atop
+
 ##### Installing LinuxBrew #####
 echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
