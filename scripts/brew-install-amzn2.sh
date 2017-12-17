@@ -64,7 +64,10 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 
 ##### Installing Monitoring Tools #####
 pip install glances
-sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
+sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
+sudo systemctl enable atop
+sudo systemctl start  atop
+sudo systemctl status atop
 
 ##### Installing Sysdig Monitoring Tools #####
 sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
