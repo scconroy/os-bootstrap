@@ -2,7 +2,7 @@
 
 ##### Make sure only non-root user is running the script #####
 if [ "$(id -u)" == "0" ]; then
-   echo "This script must NOT be run as root. Please run as normal user" 1>&2
+   echo "This script must NOT be run as root. Please run as normal user (ec2-user)" 1>&2
    exit 1
 fi
 
@@ -37,7 +37,7 @@ sudo systemctl enable awslogsd
 sudo systemctl start  awslogsd
 sudo systemctl status awslogsd
 
-##### Installing SSM Agent #####
+##### Enabling SSM Agent #####
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start  amazon-ssm-agent
 sudo systemctl status amazon-ssm-agent
@@ -47,6 +47,14 @@ sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
 sudo systemctl enable atop
 sudo systemctl start  atop
 sudo systemctl status atop
+
+##### Installing Sysdig Monitoring Tools #####
+sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
+sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+sudo yum -y install kernel-devel-$(uname -r)
+sudo yum -y install sysdig
 
 ##### Installing LinuxBrew #####
 echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
