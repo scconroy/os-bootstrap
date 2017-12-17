@@ -34,9 +34,9 @@ sudo yum update -y
 sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl file git irb python-setuptools ruby mlocate golang awslogs
 
 ##### Enabling AWSLogs #####
-sudo systemctl enable awslogs
-sudo systemctl start  awslogs
-sudo systemctl status awslogs
+sudo systemctl enable awslogsd
+sudo systemctl start  awslogsd
+sudo systemctl status awslogsd
 
 ##### Installing SSM Agent #####
 sudo systemctl enable amazon-ssm-agent
@@ -58,7 +58,7 @@ brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history
 
 ##### Adding Shells to list #####
 echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
-echo '/home/linuxbrew/.linuxbrew/bin/zsh' | sudo tee -a /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
 ##### Chainging User Shells #####
