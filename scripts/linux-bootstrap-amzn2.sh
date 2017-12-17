@@ -91,7 +91,7 @@ wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading the next Script #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
-wget $base_path/scripts/brew-install.sh -q
+wget $base_path/scripts/brew-install-amzn2.sh -q -O brew-install.sh
 chmod +x brew-install.sh
 
 ##### Downloading Custom Utils #####
