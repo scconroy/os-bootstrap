@@ -26,8 +26,7 @@ confirm() {
 ##### Setting Hostname to Amazon #####
 read -p "Enter your Hostname (Press enter for amazon): " hostname
 hostname=${hostname:-amazon}
-sudo cp /etc/sysconfig/network /etc/sysconfig/network.orig
-confirm && sudo sed -i "s/localhost\.localdomain/$hostname/" /etc/sysconfig/network
+sudo hostnamectl set-hostname $hostname
 
 ##### Updating the System #####
 sudo yum update -y
