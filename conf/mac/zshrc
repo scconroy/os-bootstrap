@@ -22,7 +22,7 @@ MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 alias reload="source $HOME/.zshrc && echo 'ZSH config reloaded from $HOME/.zshrc'"
 alias ls='ls --color=auto'
 
-source /usr/local/share/zsh/site-functions/_aws
+# source /usr/local/share/zsh/site-functions/_aws
 
 # Go lang Path
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
@@ -40,4 +40,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
 # VMIE SSH Identities
-source $HOME/.ssh/vmie.zsh
+# source $HOME/.ssh/vmie.zsh
