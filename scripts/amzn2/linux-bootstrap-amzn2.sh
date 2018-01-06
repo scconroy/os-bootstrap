@@ -59,13 +59,6 @@ sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
 
 ##### Installing LinuxBrew #####
-sudo mkdir /home/linuxbrew
-sudo chown root:root /home/linuxbrew
-sudo chmod 755 /home/linuxbrew
-mkdir /home/linuxbrew/.linuxbrew
-sudo chown ec2-user:ec2-user /home/linuxbrew/.linuxbrew
-sudo chmod 755 /home/linuxbrew/.linuxbrew
-
 echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' >>~/.bash_profile
