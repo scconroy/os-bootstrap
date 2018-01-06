@@ -1,2 +1,1 @@
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/share/bcc/examples/:/usr/share/bcc/tools/:/snap/bin
-ec2-user  ALL=NOPASSWD: ALL
