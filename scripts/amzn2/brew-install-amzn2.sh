@@ -61,7 +61,7 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 
 ##### Installing Web-Benchmarking Tools #####
 pip3 install six bottle
-pip install https://github.com/newsapps/beeswithmachineguns/archive/master.zip
+pip3 install https://github.com/newsapps/beeswithmachineguns/archive/master.zip
 go get -u github.com/rakyll/hey
 brew install vegeta
 
