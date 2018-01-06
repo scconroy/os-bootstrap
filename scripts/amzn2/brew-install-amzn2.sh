@@ -28,9 +28,6 @@ sudo mkdir -p $root_home/.config/htop/
 sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
-##### Installing libpcap first as its a dependency for other Utilities ####
-brew install libpcap
-
 ##### Installing AWS Utilities ####
 brew install python python3 ruby pip-completion brew-pip 
 brew install awscli aws-shell awsebcli awslogs s3cmd

@@ -65,8 +65,9 @@ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbi
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
-##### Tapping Brew Extras #####
+##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra
+brew install libpcap
 
 ##### Installing the Shells and Plugins #####
 brew install go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
