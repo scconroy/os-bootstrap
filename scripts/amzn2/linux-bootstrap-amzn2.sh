@@ -26,11 +26,13 @@ confirm() {
 ##### Setting Hostname to Amazon #####
 read -p "Enter your Hostname (Press enter for amazon): " hostname
 hostname=${hostname:-amazon}
-sudo hostnamectl set-hostname $hostname
+sudo hostnamectl set-hostname --static $hostname
+# use $a for last line append
+sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 
 ##### Updating the System #####
 sudo yum update -y
-sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl file git irb python-setuptools ruby mlocate golang awslogs
+sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate golang awslogs
 
 ##### Enabling AWSLogs #####
 sudo systemctl enable awslogsd
@@ -75,9 +77,9 @@ echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
 ##### Chainging User Shells #####
-#chsh -s /usr/local/bin/bash $USER
 sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
-#chsh -s /usr/local/bin/fish $USER
+#sudo chsh -s /usr/local/bin/bash $USER
+#sudo chsh -s /usr/local/bin/fish $USER
 
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
@@ -91,7 +93,7 @@ wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading the next Script #####
 wget $base_path/assets/curl-format -q -O ~/curl-format
-wget $base_path/scripts/brew-install-amzn2.sh -q -O brew-install.sh
+wget $base_path/scripts/amzn2/brew-install-amzn2.sh -q -O brew-install.sh
 chmod +x brew-install.sh
 
 ##### Downloading Custom Utils #####
