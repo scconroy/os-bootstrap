@@ -32,7 +32,7 @@ sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 
 ##### Updating the System #####
 sudo yum update -y
-sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate golang awslogs
+sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate awslogs
 
 ##### Enabling AWSLogs #####
 sudo systemctl enable awslogsd
@@ -69,7 +69,7 @@ chmod go-w '/home/linuxbrew/.linuxbrew/share'
 brew tap linuxbrew/extra
 
 ##### Installing the Shells and Plugins #####
-brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
+brew install go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
 echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells

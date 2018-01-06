@@ -63,10 +63,10 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
 ##### Installing Web-Benchmarking Tools #####
-pip install six bottle
-pip install beeswithmachineguns
+pip3 install six bottle
+pip install https://github.com/newsapps/beeswithmachineguns/archive/master.zip
 go get -u github.com/rakyll/hey
-go get -u github.com/tsenart/vegeta
+brew install vegeta
 
 ##### Other Web-Benchmarking Tools #####
 # https://github.com/denji/awesome-http-benchmark
