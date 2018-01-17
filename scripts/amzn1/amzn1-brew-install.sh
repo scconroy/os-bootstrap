@@ -64,14 +64,6 @@ brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nght
 
 ##### Installing Monitoring Tools #####
 pip install glances
-sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
-
-##### Installing Sysdig Monitoring Tools #####
-sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-sudo yum -y install kernel-devel-$(uname -r)
-sudo yum -y install sysdig
 
 ##### Installing Web-Benchmarking Tools #####
 pip install six bottle

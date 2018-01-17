@@ -58,7 +58,7 @@ brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history
 
 ##### Adding Shells to list #####
 echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
-echo '/home/linuxbrew/.linuxbrew/bin/zsh' | sudo tee -a /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
 ##### Chainging User Shells #####
@@ -86,6 +86,16 @@ sudo chmod 777 /usr/bin/ciphers-test
 sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
 wget $base_path/assets/curl-format -q -O ~/curl-format
+
+##### Installing Sysdig Monitoring Tools #####
+sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
+sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+sudo yum -y install kernel-devel-$(uname -r)
+sudo yum -y install sysdig
+sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
+sudo yum update -y
+sudo service atop start
 
 ##### Setting Brew Path #####
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
