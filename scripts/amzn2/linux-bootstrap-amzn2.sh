@@ -58,9 +58,18 @@ sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.r
 sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
 
+##### Prep for LinuxBrew #####
+password=`openssl rand -base64 37 | cut -c1-20`
+echo "$USER:$password" | sudo chpasswd
+
 ##### Installing LinuxBrew #####
+echo "Enter the Password: $password"
 echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+##### Removing password for the user #####
+sudo passwd -d `whoami`
+
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' >>~/.bash_profile
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
