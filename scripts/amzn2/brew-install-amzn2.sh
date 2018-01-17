@@ -42,8 +42,7 @@ pip3 install cloudwatchmon
 (crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
-brew install htop procps sysstat 
-brew install stress sysbench
+brew install htop procps sysstat stress sysbench 
 brew install binutils coreutils strace valgrind curl wget gawk git nano jq findutils ddate bsdmainutils libbsd pv peco
 brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
