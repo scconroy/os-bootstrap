@@ -14,7 +14,7 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
-brew cask install iterm2 google-chrome firefox keka flycut
+brew cask install iterm2 google-chrome firefox keka flycut visual-studio-code atom
 # brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
@@ -47,8 +47,8 @@ sudo wget $base_path/assets/ciphers-test -q -O /usr/local/bin/ciphers-test
 sudo chmod 777 /usr/local/bin/ciphers-test
 
 ##### Downloading the next Script #####
-wget $base_path/scripts/brew-install-mac.sh -q
-chmod +x brew-install-mac.sh
+wget $base_path/scripts/mac/brew-install-mac.sh -o brew-install.sh
+chmod +x brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
