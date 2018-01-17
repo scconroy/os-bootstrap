@@ -57,6 +57,7 @@ sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.r
 
 sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
+sudo yum update -y
 
 ##### Prep for LinuxBrew #####
 password=`openssl rand -base64 37 | cut -c1-20`
