@@ -15,7 +15,6 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
 brew cask install iterm2 google-chrome firefox keka flycut visual-studio-code atom
-# brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
 brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
@@ -28,7 +27,7 @@ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 dscl . -read /Users/$USER UserShell
 
 ##### Adding nanorc to config #####
-#curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -46,14 +45,20 @@ sudo chmod 777 /usr/local/bin/ls-instances-all
 sudo wget $base_path/assets/ciphers-test -q -O /usr/local/bin/ciphers-test
 sudo chmod 777 /usr/local/bin/ciphers-test
 
+##### Installing Amazon Tools #####
+brew cask install amazon-chime amazon-workdocs amazon-workspaces
+
+##### Uncomment if you need these #####
+#brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
+
 ##### Downloading the next Script #####
-wget $base_path/scripts/mac/brew-install-mac.sh -o brew-install.sh
-chmod +x brew-install.sh
+wget $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
+chmod +x ~/brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
 The shell will close and kick you out. Please open iTerm2 and run the following
-time ./brew-install-mac.sh
+time ./brew-install.sh
 ####################################################
 EOF
