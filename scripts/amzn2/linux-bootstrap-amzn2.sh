@@ -92,11 +92,6 @@ touch ~/.zshrc
 wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
-##### Downloading the next Script #####
-wget $base_path/assets/curl-format -q -O ~/curl-format
-wget $base_path/scripts/amzn2/brew-install-amzn2.sh -q -O brew-install.sh
-chmod +x brew-install.sh
-
 ##### Downloading Custom Utils #####
 sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
@@ -106,6 +101,7 @@ sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
 sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
+wget $base_path/assets/curl-format -q -O ~/curl-format
 
 ##### Setting Brew Path #####
 sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
@@ -122,6 +118,10 @@ echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.co
 echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+
+##### Downloading the next Script #####
+wget $base_path/scripts/amzn2/brew-install-amzn2.sh -q -O ~/brew-install.sh
+chmod +x ~/brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
