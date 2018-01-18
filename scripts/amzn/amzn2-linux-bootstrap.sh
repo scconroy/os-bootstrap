@@ -88,7 +88,7 @@ echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
-##### Chainging User Shells #####
+##### Changing User Shells #####
 sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
 #sudo chsh -s /usr/local/bin/bash $USER
 #sudo chsh -s /usr/local/bin/fish $USER
@@ -131,7 +131,7 @@ echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 
 ##### Downloading the next Script #####
-wget $base_path/scripts/amzn2/brew-install.sh -q -O ~/brew-install.sh
+wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
