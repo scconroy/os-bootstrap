@@ -24,8 +24,8 @@ confirm() {
 }
 
 ##### Setting Hostname to Amazon #####
-read -p "Enter your Hostname (Press enter for amazon): " hostname
-hostname=${hostname:-amazon}
+read -p "Enter your Hostname (Press enter for redhat): " hostname
+hostname=${hostname:-redhat}
 sudo hostnamectl set-hostname --static $hostname
 # use $a for last line append
 sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
