@@ -46,14 +46,33 @@ sudo systemctl enable atop
 sudo systemctl start  atop
 sudo systemctl status atop
 
-##### Installing Sysdig Monitoring Tools #####
-sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+##### Installing a Modern Linux Kernel #####
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo yum install -y http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+sudo yum-config-manager --enable elrepo-kernel
+sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-sudo yum -y install kernel-devel-$(uname -r)
-sudo yum -y install sysdig
-sudo yum update -y
+##### Remove old kernel stuff #####
+yum remove -y kernel-{devel,tools,tools-libs}
+
+##### Install the ELRepo built kernel and grub2-tools #####
+yum install -y kernel-ml kernel-ml-{devel,tools,tools-libs} grub2-tools
+yum install -y dkms gcc redhat-lsb-languages
+
+##### Build a new grub config with the ELRepo kernel entry #####
+grub2-mkconfig -o /boot/grub2/grub.cfg
+grep vmlinuz /boot/grub2/grub.cfg
+
+##### Ensure we boot the latest kernel #####
+grub2-set-default 0
+
+# ##### Installing Sysdig Monitoring Tools #####
+# sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+# sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
+# sudo yum -y install kernel-devel-$(uname -r)
+# sudo yum -y install sysdig
+# sudo yum update -y
+# ##### Moved to a new file after brew-install.sh
 
 ##### Prep for LinuxBrew #####
 password=`openssl rand -base64 37 | cut -c1-20`
@@ -88,7 +107,7 @@ echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 #sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
 #sudo chsh -s /usr/local/bin/bash $USER
 #sudo chsh -s /usr/local/bin/fish $USER
-sudo chsh -s /bin/zsh $USER             # Fix for RHEL being too sensitive
+sudo chsh -s /bin/zsh $USER             # Fix for RHEL being too sensitive and being a cry baby
 
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
@@ -130,11 +149,14 @@ echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 ##### Downloading the next Script #####
 wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
 chmod +x ~/brew-install.sh
+wget $base_path/scripts/rhel7/sysdig-install.sh -q -O ~/sysdig-install.sh
+chmod +x ~/sysdig-install.sh
 
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following command
+time ./sysdig-install.sh
 time ./brew-install.sh
 ####################################################
 EOF
