@@ -53,18 +53,18 @@ sudo yum-config-manager --enable elrepo-kernel
 sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 ##### Remove old kernel stuff #####
-yum remove -y kernel-{devel,tools,tools-libs}
+sudo yum remove -y kernel-{devel,tools,tools-libs}
 
 ##### Install the ELRepo built kernel and grub2-tools #####
-yum install -y kernel-ml kernel-ml-{devel,tools,tools-libs} grub2-tools
-yum install -y dkms gcc redhat-lsb-languages
+sudo yum install -y kernel-ml kernel-ml-{devel,tools,tools-libs} grub2-tools
+sudo yum install -y dkms gcc redhat-lsb-languages
 
 ##### Build a new grub config with the ELRepo kernel entry #####
-grub2-mkconfig -o /boot/grub2/grub.cfg
-grep vmlinuz /boot/grub2/grub.cfg
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo grep vmlinuz /boot/grub2/grub.cfg
 
 ##### Ensure we boot the latest kernel #####
-grub2-set-default 0
+sudo grub2-set-default 0
 
 # ##### Installing Sysdig Monitoring Tools #####
 # sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
