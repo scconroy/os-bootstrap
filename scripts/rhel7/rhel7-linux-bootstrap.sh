@@ -56,7 +56,7 @@ sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch
 sudo yum remove -y kernel-{devel,tools,tools-libs}
 
 ##### Install the ELRepo built kernel and grub2-tools #####
-sudo yum install -y kernel-ml kernel-ml-{devel,tools,tools-libs} grub2-tools
+sudo yum install -y kernel-ml kernel-ml-{devel,tools,tools-libs} grub2-tools perf
 sudo yum install -y dkms gcc redhat-lsb-languages
 
 ##### Build a new grub config with the ELRepo kernel entry #####
