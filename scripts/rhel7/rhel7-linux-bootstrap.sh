@@ -85,9 +85,10 @@ echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
 ##### Changing User Shells #####
-sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
+#sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
 #sudo chsh -s /usr/local/bin/bash $USER
 #sudo chsh -s /usr/local/bin/fish $USER
+sudo chsh -s /bin/zsh $USER             # Fix for RHEL being too sensitive
 
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
@@ -95,7 +96,7 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
-/home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
+/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
 wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
