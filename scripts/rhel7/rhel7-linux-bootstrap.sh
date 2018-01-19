@@ -155,7 +155,7 @@ chmod +x ~/sysdig-install.sh
 ##### Print Additonal ToDo Stuff #####
 cat << EOF
 ####################################################
-The instance will reboot and kick you out. Please login back and run the following command
+The instance will reboot and kick you out. Please login back and run the following commands
 time ./sysdig-install.sh
 time ./brew-install.sh
 ####################################################
