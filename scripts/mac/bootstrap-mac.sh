@@ -10,7 +10,7 @@ fi
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
 ##### Installing Brew #####
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+echo | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
