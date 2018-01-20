@@ -33,26 +33,27 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /usr/local/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/mac/zshrc -q -O ~/.zshrc
-wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
+curl $base_path/conf/mac/zshrc -o ~/.zshrc
+curl $base_path/conf/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-wget $base_path/assets/curl-format -q -O ~/curl-format
-sudo wget $base_path/assets/ls-instances -q -O /usr/local/bin/ls-instances
+curl $base_path/assets/curl-format -o ~/curl-format
+sudo curl $base_path/assets/ls-instances -o /usr/local/bin/ls-instances
 sudo chmod 777 /usr/local/bin/ls-instances
-sudo wget $base_path/assets/ls-instances-all -q -O /usr/local/bin/ls-instances-all
+sudo curl $base_path/assets/ls-instances-all -o /usr/local/bin/ls-instances-all
 sudo chmod 777 /usr/local/bin/ls-instances-all
-sudo wget $base_path/assets/ciphers-test -q -O /usr/local/bin/ciphers-test
+sudo curl $base_path/assets/ciphers-test -o /usr/local/bin/ciphers-test
 sudo chmod 777 /usr/local/bin/ciphers-test
 
 ##### Installing Amazon Tools #####
-brew cask install amazon-chime amazon-workdocs amazon-workspaces
+brew cask install amazon-chime amazon-workspaces
+#brew cask install amazon-workdocs
 
 ##### Uncomment if you need these #####
 #brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
 
 ##### Downloading the next Script #####
-wget $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
+curl $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
