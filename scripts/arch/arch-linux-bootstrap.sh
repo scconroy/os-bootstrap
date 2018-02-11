@@ -17,7 +17,7 @@ confirm() {
     esac
 }
 
-##### Installing Stuff #####
+##### Installing Arch Stuff #####
 yaourt -S curl wget file git irb python-setuptools ruby mlocate awslogs wireshark-cli --noconfirm 
 sudo usermod -a -G wireshark $user_name
 
