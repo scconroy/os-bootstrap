@@ -27,5 +27,5 @@ sudo hostnamectl set-hostname --static $hostname
 
 ##### Updating the System #####
 pacman -Syyu --noconfirm
-pacman -S base-devel
 pacman -S yaourt --noconfirm
+pacman -S base-devel
