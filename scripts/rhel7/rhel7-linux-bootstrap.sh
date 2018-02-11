@@ -66,14 +66,6 @@ sudo grep vmlinuz /boot/grub2/grub.cfg
 ##### Ensure we boot the latest kernel #####
 sudo grub2-set-default 0
 
-# ##### Installing Sysdig Monitoring Tools #####
-# sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-# sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-# sudo yum -y install kernel-devel-$(uname -r)
-# sudo yum -y install sysdig
-# sudo yum update -y
-# ##### Moved to a new file after brew-install.sh
-
 ##### Prep for LinuxBrew #####
 password=`openssl rand -base64 37 | cut -c1-20`
 echo "$USER:$password" | sudo chpasswd
