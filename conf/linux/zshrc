@@ -36,12 +36,5 @@ source /home/linuxbrew/.linuxbrew/share/zsh-history-substring-search/zsh-history
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-# VMIE SSH Identities
-# source $HOME/.ssh/vmie.zsh
-
-#unalias run-help
-#autoload run-help
-#HELPDIR=$HOME/.linuxbrew/share/zsh/help
-
 ######################################################
 fpath=(/home/linuxbrew/.linuxbrew/share/zsh-completions $fpath)
