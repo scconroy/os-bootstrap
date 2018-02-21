@@ -31,7 +31,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # Brew and Pip aliases
 alias brewski='brew update && brew upgrade --all && brew cask list | xargs brew cleanup; brew cask cleanup; brew doctor'
-alias pipu='pip freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip install -U'
+alias pipu='pip3 freeze --local | grep -v \'\^\-\e' | cut -d = -f 1  | xargs -n1 pip3 install -U'
 
 # Fancy ZSH Tools
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
