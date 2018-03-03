@@ -26,16 +26,6 @@ EDITFILES=0 >> ~/.yaourtrc
 yaourt -S curl wget file git python-setuptools ruby mlocate awslogs wireshark-cli --noconfirm 
 sudo usermod -a -G wireshark $USER
 
-##### Enabling AWSLogs #####
-#sudo systemctl enable awslogsd
-#sudo systemctl start  awslogsd
-#sudo systemctl status awslogsd
-
-##### Enabling SSM Agent #####
-#sudo systemctl enable amazon-ssm-agent
-#sudo systemctl start  amazon-ssm-agent
-#sudo systemctl status amazon-ssm-agent
-
 ##### Installing atop #####
 yaourt -S atop --noconfirm
 sudo systemctl enable atop
@@ -45,12 +35,7 @@ sudo systemctl status atop
 ##### Installing Sysdig Monitoring Tools #####
 yaourt -S sysdig --noconfirm
 
-##### Prep for LinuxBrew #####
-#password=`openssl rand -base64 37 | cut -c1-20`
-#echo "$USER:$password" | sudo chpasswd
-
 ##### Installing LinuxBrew #####
-#echo  -e "\033[33;5mEnter the Password\033[0m: $password"
 echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
@@ -62,12 +47,8 @@ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbi
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
-##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
-#brew tap linuxbrew/extra
-#brew install libpcap
-
 ##### Installing the Shells and Plugins #####
-yaourt -S go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting --noconfirm
+yaourt -S wget go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting --noconfirm
 
 ##### Changing User Shells #####
 sudo chsh -s /usr/bin/zsh $USER
@@ -85,18 +66,18 @@ wget $base_path/conf/linux/zshrc-arch -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
+sudo curl $base_path/assets/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo wget $base_path/assets/ls-instances-all -q -O /usr/bin/ls-instances-all
+sudo curl $base_path/assets/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
+sudo curl $base_path/assets/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
+sudo curl $base_path/assets/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-wget $base_path/assets/curl-format -q -O ~/curl-format
+wget $base_path/assets/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
-sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
+sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
