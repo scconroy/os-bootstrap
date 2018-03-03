@@ -88,9 +88,9 @@ Setting the Open file limits on the Box
 EOF
 echo 'fs.file-max = 256000' | sudo tee /etc/sysctl.d/60-file-max.conf
 echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
-echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
-echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
-echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
+echo '* hard nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
+echo 'root soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
+echo 'root hard nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
 
 ##### Downloading the next Script #####
 wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
