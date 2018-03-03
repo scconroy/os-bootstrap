@@ -29,3 +29,8 @@ sudo hostnamectl set-hostname --static $hostname
 pacman -Syyu --noconfirm
 pacman -S yaourt --noconfirm
 pacman -S base-devel
+
+##### Downloading Arch Bootstrap #####
+curl $base_path/scripts/arch/arch-linux-bootstrap.sh -o arch-linux-bootstrap.sh
+chmod +x arch-linux-bootstrap.sh
+chown $user_name:$user_name arch-linux-bootstrap.sh
