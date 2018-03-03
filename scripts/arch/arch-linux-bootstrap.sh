@@ -17,41 +17,40 @@ confirm() {
     esac
 }
 
+##### Configuring Yaourt #####
+cp /etc/yaourtrc ~/.yaourtrc
+BUILD_NOCONFIRM=1 >> ~/.yaourtrc
+EDITFILES=0 >> ~/.yaourtrc
+
 ##### Installing Arch Stuff #####
-yaourt -S curl wget file git irb python-setuptools ruby mlocate awslogs wireshark-cli --noconfirm 
-sudo usermod -a -G wireshark $user_name
+yaourt -S curl wget file git python-setuptools ruby mlocate awslogs wireshark-cli --noconfirm 
+sudo usermod -a -G wireshark $USER
 
 ##### Enabling AWSLogs #####
-sudo systemctl enable awslogsd
-sudo systemctl start  awslogsd
-sudo systemctl status awslogsd
+#sudo systemctl enable awslogsd
+#sudo systemctl start  awslogsd
+#sudo systemctl status awslogsd
 
 ##### Enabling SSM Agent #####
-sudo systemctl enable amazon-ssm-agent
-sudo systemctl start  amazon-ssm-agent
-sudo systemctl status amazon-ssm-agent
+#sudo systemctl enable amazon-ssm-agent
+#sudo systemctl start  amazon-ssm-agent
+#sudo systemctl status amazon-ssm-agent
 
 ##### Installing atop #####
-sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
+yaourt -S atop --noconfirm
 sudo systemctl enable atop
 sudo systemctl start  atop
 sudo systemctl status atop
 
 ##### Installing Sysdig Monitoring Tools #####
-sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-sudo yum -y install kernel-devel-$(uname -r)
-sudo yum -y install sysdig
-sudo yum update -y
+yaourt -S sysdig --noconfirm
 
 ##### Prep for LinuxBrew #####
-password=`openssl rand -base64 37 | cut -c1-20`
-echo "$USER:$password" | sudo chpasswd
+#password=`openssl rand -base64 37 | cut -c1-20`
+#echo "$USER:$password" | sudo chpasswd
 
 ##### Installing LinuxBrew #####
-echo  -e "\033[33;5mEnter the Password\033[0m: $password"
+#echo  -e "\033[33;5mEnter the Password\033[0m: $password"
 echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
@@ -64,21 +63,16 @@ source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
 ##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
-brew tap linuxbrew/extra
-brew install libpcap
+#brew tap linuxbrew/extra
+#brew install libpcap
 
 ##### Installing the Shells and Plugins #####
-brew install go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
-
-##### Adding Shells to list #####
-echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
-echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
-echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
+yaourt -S go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting --noconfirm
 
 ##### Changing User Shells #####
-sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
-#sudo chsh -s /usr/local/bin/bash $USER
-#sudo chsh -s /usr/local/bin/fish $USER
+sudo chsh -s /usr/bin/zsh $USER
+#sudo chsh -s /usr/bin/bash $USER
+#sudo chsh -s /usr/bin/fish $USER
 
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
@@ -86,8 +80,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
-/home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
+/usr/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
+wget $base_path/conf/linux/zshrc-arch -q -O ~/.zshrc
 wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
