@@ -3,7 +3,7 @@
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
-##### Creating a non-privleged user #####
+##### Creating a non-privileged user #####
 read -p "Enter your Username (Press enter for ec2-user): " user_name
 user_name=${user_name:-ec2-user}
 groupadd -g 1000 $user_name
@@ -14,7 +14,7 @@ chown -R $user_name:$user_name /home/$user_name
 chmod -R 700 /home/$user_name
 echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/sudo
 
-##### Creating a non-privleged user #####
+##### Creating a non-privileged user #####
 cp -r /root/.ssh/ /home/$user_name/
 chown -R $user_name:$user_name /home/$user_name/
 rm -rf /root/.ssh/
@@ -26,9 +26,9 @@ hostname=${hostname:-arch}
 sudo hostnamectl set-hostname --static $hostname
 
 ##### Updating the System #####
+pacman -S base-devel
 pacman -Syyu --noconfirm
 pacman -S yaourt --noconfirm
-pacman -S base-devel
 
 ##### Downloading Arch Bootstrap #####
 curl $base_path/scripts/arch/arch-linux-bootstrap.sh -o /home/$user_name/arch-linux-bootstrap.sh
