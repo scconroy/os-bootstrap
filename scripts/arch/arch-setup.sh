@@ -26,9 +26,12 @@ hostname=${hostname:-arch}
 sudo hostnamectl set-hostname --static $hostname
 
 ##### Updating the System and installing Yaourt #####
-pacman -Syyu yaourt base-devel
+mv /etc/pacman.conf /etc/pacman.conf.bak
+curl $base_path/conf/linux/pacman.conf -o /etc/pacman.conf
+chmod 644 /etc/pacman.conf
+pacman -Syyu yaourt base-devel --noconfirm
 
 ##### Downloading Arch Bootstrap #####
 curl $base_path/scripts/arch/arch-linux-bootstrap.sh -o /home/$user_name/arch-linux-bootstrap.sh
-chmod +x arch-linux-bootstrap.sh
-chown $user_name:$user_name arch-linux-bootstrap.sh
+chmod +x /home/$user_name/arch-linux-bootstrap.sh
+chown $user_name:$user_name /home/$user_name/arch-linux-bootstrap.sh
