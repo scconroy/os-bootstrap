@@ -29,7 +29,8 @@ sudo hostnamectl set-hostname --static $hostname
 mv /etc/pacman.conf /etc/pacman.conf.bak
 curl $base_path/conf/linux/pacman.conf -o /etc/pacman.conf
 chmod 644 /etc/pacman.conf
-pacman -Syyu yaourt base-devel --noconfirm
+pacman -Syyu --noconfirm
+pacman -Syyu base-devel yaourt --noconfirm
 
 ##### Downloading Arch Bootstrap #####
 curl $base_path/scripts/arch/arch-linux-bootstrap.sh -o /home/$user_name/arch-linux-bootstrap.sh
