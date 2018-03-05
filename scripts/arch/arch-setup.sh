@@ -26,6 +26,7 @@ hostname=${hostname:-arch}
 sudo hostnamectl set-hostname --static $hostname
 
 ##### Updating the System and installing Yaourt #####
+pacman -Syyu gcc gcc-libs --noconfirm
 mv /etc/pacman.conf /etc/pacman.conf.bak
 curl $base_path/conf/linux/pacman.conf -o /etc/pacman.conf
 chmod 644 /etc/pacman.conf
