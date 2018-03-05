@@ -18,6 +18,7 @@ echo '%wheel ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/sudo
 cp -r /root/.ssh/ /home/$user_name/
 chown -R $user_name:$user_name /home/$user_name/
 rm -rf /root/.ssh/
+sudo passwd -d root
 sudo passwd -d $user_name
 
 ##### Setting Hostname to Arch #####
