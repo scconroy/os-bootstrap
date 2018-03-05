@@ -25,10 +25,8 @@ read -p "Enter your Hostname (Press enter for arch): " hostname
 hostname=${hostname:-arch}
 sudo hostnamectl set-hostname --static $hostname
 
-##### Updating the System #####
-pacman -S base-devel
-pacman -Syyu --noconfirm
-pacman -S yaourt --noconfirm
+##### Updating the System and installing Yaourt #####
+pacman -Syyu yaourt base-devel
 
 ##### Downloading Arch Bootstrap #####
 curl $base_path/scripts/arch/arch-linux-bootstrap.sh -o /home/$user_name/arch-linux-bootstrap.sh
