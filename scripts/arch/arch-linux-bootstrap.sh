@@ -48,7 +48,7 @@ source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
 ##### Installing the Shells and Plugins #####
-yaourt -S wget go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting --noconfirm
+yaourt -S go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting --noconfirm
 
 ##### Changing User Shells #####
 sudo chsh -s /usr/bin/zsh $USER
@@ -62,8 +62,8 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /usr/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/linux/zshrc-arch -q -O ~/.zshrc
-wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
+curl $base_path/conf/linux/zshrc-arch -o ~/.zshrc
+curl $base_path/conf/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
 sudo curl $base_path/assets/ls-instances -o /usr/bin/ls-instances
@@ -74,7 +74,7 @@ sudo curl $base_path/assets/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
 sudo curl $base_path/assets/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-wget $base_path/assets/curl-format -o ~/curl-format
+curl $base_path/assets/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
 sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
@@ -93,7 +93,7 @@ EOF
 #echo 'root hard nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
 
 ##### Downloading the next Script #####
-wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
+curl $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additonal ToDo Stuff #####
