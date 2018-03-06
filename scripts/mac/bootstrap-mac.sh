@@ -14,8 +14,9 @@ echo | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew
 
 ##### Installing the Shells and Plugins #####
 brew install git wget axel curl coreutils binutils
-brew cask install iterm2 google-chrome firefox keka flycut visual-studio-code atom
-brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
+brew cask install firefox --force
+brew cask install iterm2 google-chrome keka flycut visual-studio-code atom
+brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting brew-cask-completion
 
 ##### Adding Shells to list #####
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
