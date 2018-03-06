@@ -51,6 +51,7 @@ brew cask install amazon-chime amazon-workspaces
 
 ##### Uncomment if you need these #####
 #brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
+brew cask install typora microsoft-remote-desktop
 
 ##### Downloading the next Script #####
 curl $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
