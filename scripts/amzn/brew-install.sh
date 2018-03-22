@@ -36,6 +36,10 @@ pip3 awscli aws-shell awsebcli awslogs s3cmd
 mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
+##### Configuring AWS CloudWatch Agent #####
+instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
+
 ##### Setting up Linux Monintoring Scripts ####
 sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
 pip3 install cloudwatchmon
