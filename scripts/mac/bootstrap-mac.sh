@@ -24,9 +24,13 @@ brew cask install visual-studio-code
 brew cask install atom
 brew cask install cakebrew
 
+##### Installing the Meslo Font (12pt Meslo M DZ) #####
+brew tap caskroom/fonts
+brew cask install font-meslo-for-powerline
+
 ##### Installing the Shells and Plugins #####
 brew install coreutils binutils
-brew install git 
+brew install git jq gawk
 brew install wget axel curl
 brew install bash fish zsh 
 brew install zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting

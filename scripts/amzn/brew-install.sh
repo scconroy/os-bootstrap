@@ -29,7 +29,8 @@ sudo curl $base_path/assets/htoprc -o $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
 ##### Installing Shiny new Python versions and AWS Utilities ####
-brew install python python3 ruby
+brew install python@2 python ruby
+pip3 install --upgrade pip setuptools wheel
 pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
@@ -49,12 +50,18 @@ pip3 install cloudwatchmon
 brew install htop procps sysstat stress sysbench 
 brew install binutils coreutils gawk
 brew install strace valgrind 
-brew install curl wget 
-brew install git nano jq 
+brew install curl axel wget 
+brew install git jq 
 brew install findutils ddate bsdmainutils libbsd pv peco
 brew install openssh libssh2 sshrc openssl 
 brew install rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
+
+##### All the Editor foo ####
+brew install vim nano
+brew install neovim
+pip3 install neovim
+#curl -sLf https://spacevim.org/install.sh | bash
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio dc3dd ddrescue iozone
