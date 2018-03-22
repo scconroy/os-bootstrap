@@ -23,15 +23,21 @@ chmod 644 ~/.config/htop/htoprc
 brew install libpcap
 
 ##### Installing AWS Utilities ####
-brew install python python3 ruby pip-completion brew-pip 
-sudo pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
+brew install python python3 ruby 
+pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
 curl $base_path/assets/aws-config -o ~/.aws/config
 
+##### All the Editor foo ####
+brew install vim nano
+brew install neovim
+pip3 install neovim
+#curl -sLf https://spacevim.org/install.sh | bash
+
 ##### Installing OS Utilities ####
-brew install htop valgrind gawk nano jq findutils ddate pv peco
+brew install htop valgrind gawk jq findutils ddate pv peco
 brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zip
 
 ##### Installing Network Utilities ####

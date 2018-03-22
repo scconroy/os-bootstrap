@@ -79,9 +79,11 @@ chmod go-w '/home/linuxbrew/.linuxbrew/share'
 ##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra
 brew install libpcap
+brew install go 
 
 ##### Installing the Shells and Plugins #####
-brew install go bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting
+brew install bash fish zsh 
+brew install zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
 echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
@@ -134,7 +136,7 @@ echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
-##### Print Additonal ToDo Stuff #####
+##### Print Additional ToDo Stuff #####
 cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following command

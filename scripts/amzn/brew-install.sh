@@ -15,40 +15,45 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 ########## Installing Utilities #########
 
 ##### Configuring toprc and htoprc for current User #####
-wget $base_path/assets/toprc -q -O ~/.toprc
+curl $base_path/assets/toprc -o ~/.toprc
 mkdir -p ~/.config/htop/
-wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
+curl $base_path/assets/htoprc -o ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Configuring toprc and htoprc for root User #####
 root_home=$(eval echo "~root")
 
-sudo wget $base_path/assets/toprc -q -O $root_home/.toprc
+sudo curl $base_path/assets/toprc -o $root_home/.toprc
 sudo mkdir -p $root_home/.config/htop/
-sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
+sudo curl $base_path/assets/htoprc -o $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
 ##### Installing Shiny new Python versions and AWS Utilities ####
 brew install python python3 ruby
-pip3 awscli aws-shell awsebcli awslogs s3cmd
+pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
-wget $base_path/assets/aws-config -q -O ~/.aws/config
+curl $base_path/assets/aws-config -o ~/.aws/config
 
 ##### Configuring AWS CloudWatch Agent #####
 instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
 
-##### Setting up Linux Monintoring Scripts ####
+##### Setting up Linux Monitoring Scripts ####
 sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
 pip3 install cloudwatchmon
 (crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
 brew install htop procps sysstat stress sysbench 
-brew install binutils coreutils strace valgrind curl wget gawk git nano jq findutils ddate bsdmainutils libbsd pv peco
-brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
+brew install binutils coreutils gawk
+brew install strace valgrind 
+brew install curl wget 
+brew install git nano jq 
+brew install findutils ddate bsdmainutils libbsd pv peco
+brew install openssh libssh2 sshrc openssl 
+brew install rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
 
 ##### Installing Disk Utilities ####

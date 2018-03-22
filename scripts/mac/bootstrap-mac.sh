@@ -12,19 +12,31 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 ##### Installing Brew #####
 echo | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-##### Installing the Shells and Plugins #####
-brew install git wget axel curl coreutils binutils
-pkill -f firefox
+##### Installing the Browsers, Editors and Apps #####
+killall 'firefox'
 brew cask install firefox --force
-brew cask install iterm2 google-chrome keka flycut visual-studio-code atom
-brew install bash fish zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting brew-cask-completion
+killall 'Google Chrome'
+brew cask install google-chrome --force
+brew cask install iterm2
+brew cask install keka
+brew cask install flycut
+brew cask install visual-studio-code
+brew cask install atom
+brew cask install cakebrew
+
+##### Installing the Shells and Plugins #####
+brew install coreutils binutils
+brew install git 
+brew install wget axel curl
+brew install bash fish zsh 
+brew install zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting
 
 ##### Adding Shells to list #####
 echo '/usr/local/bin/bash' | sudo tee -a /etc/shells
 echo '/usr/local/bin/zsh'  | sudo tee -a /etc/shells
 echo '/usr/local/bin/fish' | sudo tee -a /etc/shells
 
-##### Making ZSH the deafult Shell #####
+##### Making ZSH the default Shell #####
 sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 dscl . -read /Users/$USER UserShell
 
@@ -48,18 +60,25 @@ sudo curl $base_path/assets/ciphers-test -o /usr/local/bin/ciphers-test
 sudo chmod 777 /usr/local/bin/ciphers-test
 
 ##### Installing Amazon Tools #####
-brew cask install amazon-chime amazon-workspaces
+brew cask install amazon-chime
+brew cask install amazon-workspaces
 #brew cask install amazon-workdocs
 
 ##### Uncomment if you need these #####
-#brew cask install atext typora microsoft-remote-desktop-beta applepi-baker marshallofsound-google-play-music-player caskroom/drivers/logitech-options caskroom/versions/sublime-text-dev
-brew cask install typora microsoft-remote-desktop-beta quip
+#brew cask install atext applepi-baker marshallofsound-google-play-music-player 
+#brew cask install caskroom/drivers/logitech-options
+#brew cask install caskroom/versions/sublime-text-dev
+#brew cask install suspicious-package
+#brew cask install appcleaner
+brew cask install typora 
+brew cask install quip
+brew cask install microsoft-remote-desktop-beta
 
 ##### Downloading the next Script #####
 curl $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
-##### Print Additonal ToDo Stuff #####
+##### Print Additional ToDo Stuff #####
 cat << EOF
 ####################################################
 The shell will close and kick you out. Please open iTerm2 and run the following
