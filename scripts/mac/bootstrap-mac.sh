@@ -22,6 +22,7 @@ brew cask install keka
 brew cask install flycut
 brew cask install visual-studio-code
 brew cask install atom
+#brew cask install sublime-text-dev
 brew cask install cakebrew
 
 ##### Installing the Meslo Font (12pt Meslo M DZ) #####
@@ -69,11 +70,12 @@ brew cask install amazon-workspaces
 #brew cask install amazon-workdocs
 
 ##### Uncomment if you need these #####
-#brew cask install atext applepi-baker marshallofsound-google-play-music-player 
 #brew cask install caskroom/drivers/logitech-options
-#brew cask install caskroom/versions/sublime-text-dev
+#brew cask install atext applepi-baker marshallofsound-google-play-music-player 
 #brew cask install suspicious-package
 #brew cask install appcleaner
+#brew cask install keybase
+#brew cask install gpg-suite
 brew cask install typora 
 brew cask install quip
 brew cask install microsoft-remote-desktop-beta
@@ -89,3 +91,6 @@ The shell will close and kick you out. Please open iTerm2 and run the following
 time ./brew-install.sh
 ####################################################
 EOF
+
+osascript -e 'tell application "Terminal" to quit'
+exit 0
