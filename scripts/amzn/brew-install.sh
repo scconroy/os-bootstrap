@@ -28,9 +28,9 @@ sudo mkdir -p $root_home/.config/htop/
 sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
-##### Installing AWS Utilities ####
-brew install python python3 ruby pip-completion brew-pip 
-brew install awscli aws-shell awsebcli awslogs s3cmd
+##### Installing Shiny new Python versions and AWS Utilities ####
+brew install python python3 ruby
+pip3 awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
