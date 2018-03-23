@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ### Generate PublicKey (if required) ###
-# ssh-keygen -t rsa -b 4096 -C "gorthia" -f .ssh/authorized_keys
+# ssh-keygen -t rsa -b 4096 -C `whoami` -f $HOME/.ssh/`whoami`.pem
+# mv $HOME/.ssh/`whoami`.pem.pub $HOME/.ssh/`whoami`.pub 
 
 pub_key_path=$1
 if [ -z "$1" ]; then
