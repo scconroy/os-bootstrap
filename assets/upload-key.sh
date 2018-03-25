@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ### Generate PublicKey (if required) ###
-# ssh-keygen -t rsa -b 4096 -C `whoami` -f $HOME/.ssh/`whoami`.pem
-# mv $HOME/.ssh/`whoami`.pem.pub $HOME/.ssh/`whoami`.pub 
+# ssh-keygen -t rsa -b 4096 -P '' -C `whoami` -f $HOME/.ssh/`whoami`
+# mv $HOME/.ssh/`whoami` $HOME/.ssh/`whoami`.pem 
 
+### Setting Keyname and Keypath ###
 pub_key_path=$1
 if [ -z "$1" ]; then
     pub_key_path="$HOME/.ssh/authorized_keys"
@@ -17,6 +18,7 @@ fi
 ### Enumerate AWS Regions ###
 regions=$(aws ec2 describe-regions --output text | cut -f 3)
 
+### Iterating over AWS Regions and uploading Publickey ###
 while read line
 do
     echo "For region: $line"
