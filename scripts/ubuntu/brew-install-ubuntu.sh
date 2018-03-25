@@ -55,7 +55,7 @@ brew install curl axel wget
 brew install git jq 
 brew install findutils ddate bsdmainutils libbsd pv peco
 brew install openssh libssh2 sshrc openssl 
-brew install rsync screen ipbt unzip bzip2 xz ddar
+brew install rsync screen ipbt unzip bzip2 xz
 brew install redis
 
 ##### All the Editor foo ####
@@ -68,7 +68,7 @@ pip3 install neovim
 brew install iotop ioping ncdu fio dc3dd ddrescue
 
 ##### Installing Network Utilities ####
-brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
+brew install iftop tcpdump tcpstat nethogs ifstat dnstop mtr tcptraceroute netcat nmap iperf3
 brew install arping fping liboping twoping httpstat ipv6calc ipv6toolkit ip_relay
 brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 

@@ -9,26 +9,12 @@ fi
 ##### Configuring Basepath and Repo #####
 base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 
-##### Defining the Confirm function #####
-confirm() {
-    # call with a prompt string or use a default
-    read -r -p "${1:-Are you sure you want set Hostname to $hostname? [y/N]} " response
-    case "$response" in
-        [yY][eE][sS]|[yY]) 
-            true
-            ;;
-        *)
-            false
-            ;;
-    esac
-}
-
 ##### Setting Hostname to Amazon #####
-read -p "Enter your Hostname (Press enter for ubuntu): " hostname
-hostname=${hostname:-ubuntu}
-sudo hostnamectl set-hostname --static $hostname
+#read -p "Enter your Hostname (Press enter for ubuntu): " hostname
+#hostname=${hostname:-ubuntu}
+#sudo hostnamectl set-hostname --static $hostname
 # use $a for last line append
-sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
+#sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 
 ##### Updating the System #####
 sudo apt update
@@ -111,14 +97,20 @@ curl $base_path/assets/curl-format -o ~/curl-format
 sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
+##### Installing bcc tools #####
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
+echo "deb https://repo.iovisor.org/apt/xenial xenial main" | sudo tee /etc/apt/sources.list.d/iovisor.list
+sudo apt update
+sudo apt -y install bcc-tools libbcc-examples linux-headers-$(uname -r)
+
 ##### Giving user SuperPowers #####
 cat << EOF
 ####################################################
 Setting the Open file limits on the Box
 ####################################################
 EOF
-echo 'fs.file-max = 256000' | sudo tee /etc/sysctl.d/60-file-max.conf
-echo '* soft nofile 256000' | sudo tee /etc/security/limits.d/60-nofile-limit.conf
+echo 'fs.file-max = 256000' | sudo tee -a /etc/sysctl.d/60-file-max.conf
+echo '* soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
