@@ -97,12 +97,6 @@ curl $base_path/assets/curl-format -o ~/curl-format
 sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
-##### Installing bcc tools #####
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
-echo "deb https://repo.iovisor.org/apt/xenial xenial main" | sudo tee /etc/apt/sources.list.d/iovisor.list
-sudo apt update
-sudo apt -y install bcc-tools libbcc-examples linux-headers-$(uname -r)
-
 ##### Giving user SuperPowers #####
 cat << EOF
 ####################################################
