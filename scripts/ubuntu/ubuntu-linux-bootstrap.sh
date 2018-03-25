@@ -126,7 +126,7 @@ echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 ##### Downloading the next Script #####
 curl $base_path/scripts/ubuntu/ubuntu-sysdig-install.sh -o ~/sysdig-install.sh
 chmod +x ~/sysdig-install.sh
-curl $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
+curl $base_path/scripts/ubuntu/brew-install-ubuntu.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additional ToDo Stuff #####
