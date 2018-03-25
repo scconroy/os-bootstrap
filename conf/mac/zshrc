@@ -11,7 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-#source /usr/local/bin/aws_zsh_completer.sh
 
 # Prezto update
 alias pzupdate='cd $HOME/.zprezto && git pull && git submodule update --init --recursive && cd -'
