@@ -25,7 +25,9 @@ brew install libpcap
 ##### Installing AWS Utilities ####
 brew install python@2 python ruby
 pip3 install --upgrade pip setuptools wheel
-pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
+pip3 install --upgrade awscli aws-shell saws awsebcli awslogs s3cmd
+brew tap wallix/awless
+brew install awless
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
