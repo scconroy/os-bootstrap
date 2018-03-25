@@ -2,7 +2,7 @@
 
 ##### Make sure only non-root user is running the script #####
 if [ "$(id -u)" == "0" ]; then
-   echo "This script must NOT be run as root. Please run as normal user" 1>&2
+   echo "This script must NOT be run as root. Please run as normal user (ec2-user)" 1>&2
    exit 1
 fi
 
@@ -23,53 +23,68 @@ confirm() {
     esac
 }
 
-##### Adding User to sudoers #####
-#username=$USER
-#echo "ubuntu ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/ubuntu
-
 ##### Setting Hostname to Amazon #####
 read -p "Enter your Hostname (Press enter for ubuntu): " hostname
 hostname=${hostname:-ubuntu}
-sudo hostnamectl set-hostname $hostname
+sudo hostnamectl set-hostname --static $hostname
+# use $a for last line append
+sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 
 ##### Updating the System #####
 sudo apt update
 sudo apt upgrade -y
-sudo apt -y install build-essential jq curl ruby file mlocate binutils coreutils git irb python python-setuptools ruby
+sudo apt install build-essential jq curl ruby file mlocate binutils coreutils git irb python-setuptools ruby golang -y
 
-##### Enabling AWSLogs #####
-#region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -c -r .region)
-#curl https://s3.amazonaws.com//aws-cloudwatch/downloads/latest/awslogs-agent-setup.py -o /tmp/awslogs-agent-setup.py
-#sudo python /tmp/awslogs-agent-setup.py --region $region
-
-##### Installing SSM Agent #####	
-wget https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb
-sudo dpkg -i amazon-ssm-agent.deb
+##### Installing and enabling SSM Agent #####
+curl https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb -o /tmp/
+sudo dpkg -i /tmp/amazon-ssm-agent.deb
 sudo systemctl enable amazon-ssm-agent
-rm -f amazon-ssm-agent.deb
+sudo systemctl start  amazon-ssm-agent
+sudo systemctl status amazon-ssm-agent
+
+##### Installing atop #####
+curl http://mirrors.kernel.org/ubuntu/pool/universe/a/atop/atop_2.3.0-1_amd64.deb -o /tmp/atop.deb
+sudo dpkg -i /tmp/atop.deb
+sudo service atop reload
+sudo systemctl enable atop
+sudo systemctl start  atop
+sudo systemctl status atop
+
+##### Prep for LinuxBrew #####
+password=`openssl rand -base64 37 | cut -c1-20`
+echo "$USER:$password" | sudo chpasswd
 
 ##### Installing LinuxBrew #####
-echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+echo  -e "\033[33;5mEnter the Password\033[0m: $password"
+echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+
+##### Removing password for the user #####
+sudo passwd -d `whoami`
+
+##### Export LinuxBrew Path #####
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' >>~/.bash_profile
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
-##### Tapping Brew Extras #####
+##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra
+brew install libpcap
 
 ##### Installing the Shells and Plugins #####
-brew install bash fish zsh zsh-autosuggestions zsh-completions zshdb zsh-history-substring-search zsh-lovers zsh-navigation-tools zsh-syntax-highlighting
+brew install bash fish zsh 
+brew install zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-navigation-tools zsh-syntax-highlighting
+brew install go
 
 ##### Adding Shells to list #####
 echo '/home/linuxbrew/.linuxbrew/bin/bash' | sudo tee -a /etc/shells
-echo '/home/linuxbrew/.linuxbrew/bin/zsh' | sudo tee -a /etc/shells
+echo '/home/linuxbrew/.linuxbrew/bin/zsh'  | sudo tee -a /etc/shells
 echo '/home/linuxbrew/.linuxbrew/bin/fish' | sudo tee -a /etc/shells
 
-##### Chainging User Shells #####
-#chsh -s /usr/local/bin/bash $USER
+##### Changing User Shells #####
 sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
-#chsh -s /usr/local/bin/fish $USER
+#sudo chsh -s /usr/local/bin/bash $USER
+#sudo chsh -s /usr/local/bin/fish $USER
 
 ##### Adding nanorc to config #####
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
@@ -78,26 +93,22 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
-wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
-
-##### Downloading the next Script #####
-wget $base_path/assets/curl-format -q -O ~/curl-format
-wget $base_path/scripts/half-baked/brew-install-ubuntu.sh -q
-chmod +x brew-install-ubuntu.sh
+curl $base_path/conf/linux/zshrc -o ~/.zshrc
+curl $base_path/conf/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
+sudo curl $base_path/assets/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo wget $base_path/assets/ls-instances-all -q -O /usr/bin/ls-instances-all
+sudo curl $base_path/assets/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
+sudo curl $base_path/assets/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
+sudo curl $base_path/assets/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
+curl $base_path/assets/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
-sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
+sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
@@ -112,26 +123,13 @@ echo '* hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit
 echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 
-##### Installing bcc tools #####
-#echo "deb [trusted=yes] https://repo.iovisor.org/apt/xenial xenial-nightly main" | sudo tee /etc/apt/sources.list.d/iovisor.list
-#sudo apt update
-#sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
+##### Downloading the next Script #####
+curl $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
+chmod +x ~/brew-install.sh
+curl $base_path/scripts/ubuntu/ubuntu-sysdig-install.sh -o ~/sysdig-install.sh
+chmod +x ~/sysdig-install.sh
 
-cat << EOF
-####################################################
-Setting the Open file limits on the Box
-####################################################
-sudo python /usr/share/bcc/examples/hello_world.py
-sudo python /usr/share/bcc/examples/tracing/task_switch.py
-EOF
-
-##### Installing pyroute2 #####
-git clone https://github.com/svinota/pyroute2
-cd pyroute2; sudo make install
-#sudo python /usr/share/bcc/examples/networking/simple_tc.py
-cd .. && sudo rm -rf pyroute2
-
-##### Print Additonal ToDo Stuff #####
+##### Print Additional ToDo Stuff #####
 cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following commands
@@ -140,6 +138,5 @@ time ./brew-install.sh
 ####################################################
 EOF
 
-#sudo apt install bcc bcc-tools libbcc-examples python-bcc -y
 ##### Rebooting Box #####
 sudo reboot

@@ -14,41 +14,55 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
 ########## Installing Utilities #########
 
-##### Configuring toprc and htoprc #####
-wget $base_path/assets/toprc -q -O ~/.toprc
+##### Configuring toprc and htoprc for current User #####
+curl $base_path/assets/toprc -o ~/.toprc
 mkdir -p ~/.config/htop/
-wget $base_path/assets/htoprc -q -O ~/.config/htop/htoprc
+curl $base_path/assets/htoprc -o ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
+##### Configuring toprc and htoprc for root User #####
 root_home=$(eval echo "~root")
 
-sudo wget $base_path/assets/toprc -q -O $root_home/.toprc
+sudo curl $base_path/assets/toprc -o $root_home/.toprc
 sudo mkdir -p $root_home/.config/htop/
-sudo wget $base_path/assets/htoprc -q -O $root_home/.config/htop/htoprc
+sudo curl $base_path/assets/htoprc -o $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
-##### Installing libpcap first as its a dependency for other Utilities ####
-brew install libpcap
-
-##### Installing AWS Utilities ####
-brew install python python3 ruby pip-completion brew-pip 
-brew install awscli aws-shell awsebcli awslogs s3cmd
+##### Installing Shiny new Python versions and AWS Utilities ####
+brew install python@2 python ruby
+pip3 install --upgrade pip setuptools wheel
+pip3 install --upgrade awscli aws-shell awsebcli awslogs s3cmd
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
 wget $base_path/assets/aws-config -q -O ~/.aws/config
 
-##### Setting up Linux Monintoring Scripts ####
+##### Configuring AWS CloudWatch Agent #####
+instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
+
+##### Setting up Linux Monitoring Scripts ####
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.cache/
 pip3 install cloudwatchmon
 (crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
-brew install htop procps sysstat 
-brew install stress sysbench
-brew install binutils coreutils strace valgrind curl wget gawk git nano jq findutils ddate bsdmainutils libbsd pv peco
-brew install openssh libssh2 sshrc openssl rsync screen ipbt unzip bzip2 xz ddar
+brew install htop procps sysstat stress sysbench
+pip3 install glances
+brew install binutils coreutils gawk
+brew install strace valgrind 
+brew install curl axel wget 
+brew install git jq 
+brew install findutils ddate bsdmainutils libbsd pv peco
+brew install openssh libssh2 sshrc openssl 
+brew install rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
+
+##### All the Editor foo ####
+brew install vim nano
+brew install neovim
+pip3 install neovim
+#curl -sLf https://spacevim.org/install.sh | bash
 
 ##### Installing Disk Utilities ####
 brew install iotop ioping ncdu fio dc3dd ddrescue
@@ -61,22 +75,11 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
-##### Installing Monitoring Tools #####
-pip install glances
-#sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el6.x86_64.rpm
-
-##### Installing Sysdig Monitoring Tools #####
-sudo curl -s https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public | apt-key add -
-sudo curl -s -o /etc/apt/sources.list.d/draios.list http://download.draios.com/stable/deb/draios.list
-sudo apt update
-sudo apt -y install linux-headers-$(uname -r)
-sudo apt -y install sysdig
-
 ##### Installing Web-Benchmarking Tools #####
-pip install six bottle
-pip install beeswithmachineguns
+pip3 install six bottle
+pip3 install https://github.com/newsapps/beeswithmachineguns/archive/master.zip
 go get -u github.com/rakyll/hey
-go get -u github.com/tsenart/vegeta
+brew install vegeta
 
 ##### Other Web-Benchmarking Tools #####
 # https://github.com/denji/awesome-http-benchmark
