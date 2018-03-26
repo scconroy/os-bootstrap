@@ -60,7 +60,8 @@ brew install rsync screen ipbt unzip bzip2 xz ddar
 brew install redis
 
 ##### All the Editor foo ####
-brew install vim nano
+brew install vim --with-override-system-vi
+brew install nano
 brew install neovim
 pip3 install neovim
 #curl -sLf https://spacevim.org/install.sh | bash
