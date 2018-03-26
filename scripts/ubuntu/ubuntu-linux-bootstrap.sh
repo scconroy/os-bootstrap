@@ -22,7 +22,7 @@ sudo apt upgrade -y
 sudo apt install build-essential jq curl ruby file mlocate binutils coreutils git irb python-setuptools ruby golang -y
 
 ##### Installing and enabling SSM Agent #####
-curl https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb -o /tmp/
+curl https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_amd64/amazon-ssm-agent.deb -o /tmp/amazon-ssm-agent.deb
 sudo dpkg -i /tmp/amazon-ssm-agent.deb
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start  amazon-ssm-agent
