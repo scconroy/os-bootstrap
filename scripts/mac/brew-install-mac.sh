@@ -34,7 +34,8 @@ mkdir ~/.aws
 curl $base_path/assets/aws-config -o ~/.aws/config
 
 ##### All the Editor foo ####
-brew install vim nano
+brew install nano
+brew install vim --with-override-system-vi
 brew install neovim
 pip3 install neovim
 #curl -sLf https://spacevim.org/install.sh | bash
