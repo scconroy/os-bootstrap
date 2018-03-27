@@ -108,22 +108,22 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-wget $base_path/conf/linux/zshrc -q -O ~/.zshrc
-wget $base_path/conf/zpreztorc -q -O ~/.zpreztorc
+curl $base_path/conf/linux/zshrc -o ~/.zshrc
+curl $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo wget $base_path/assets/ls-instances -q -O /usr/bin/ls-instances
+sudo curl $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo wget $base_path/assets/ls-instances-all -q -O /usr/bin/ls-instances-all
+sudo curl $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo wget $base_path/assets/ciphers-test -q -O /usr/bin/ciphers-test
+sudo curl $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo wget $base_path/assets/clone-instance -q -O /usr/bin/clone-instance
+sudo curl $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-wget $base_path/assets/curl-format -q -O ~/curl-format
+curl $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
-sudo wget $base_path/assets/brew-path -q -O /etc/sudoers.d/brew-path
+sudo curl $base_path/conf/linux/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
@@ -139,12 +139,12 @@ echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 
 ##### Downloading the next Script #####
-wget $base_path/scripts/amzn/brew-install.sh -q -O ~/brew-install.sh
+curl $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
-wget $base_path/scripts/rhel7/sysdig-install.sh -q -O ~/sysdig-install.sh
+curl $base_path/scripts/rhel7/sysdig-install.sh -o ~/sysdig-install.sh
 chmod +x ~/sysdig-install.sh
 
-##### Print Additonal ToDo Stuff #####
+##### Print Additional ToDo Stuff #####
 cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following commands

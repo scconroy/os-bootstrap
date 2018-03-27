@@ -15,17 +15,17 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 ########## Installing Utilities #########
 
 ##### Configuring toprc and htoprc for current User #####
-curl $base_path/assets/toprc -o ~/.toprc
+curl $base_path/conf/linux/toprc -o ~/.toprc
 mkdir -p ~/.config/htop/
-curl $base_path/assets/htoprc -o ~/.config/htop/htoprc
+curl $base_path/conf/generic/htoprc -o ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Configuring toprc and htoprc for root User #####
 root_home=$(eval echo "~root")
 
-sudo curl $base_path/assets/toprc -o $root_home/.toprc
+sudo curl $base_path/conf/linux/toprc -o $root_home/.toprc
 sudo mkdir -p $root_home/.config/htop/
-sudo curl $base_path/assets/htoprc -o $root_home/.config/htop/htoprc
+sudo curl $base_path/conf/generic/htoprc -o $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
 ##### Installing Shiny new Python versions and AWS Utilities ####
@@ -36,7 +36,7 @@ go get -u github.com/wallix/awless
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
-wget $base_path/assets/aws-config -q -O ~/.aws/config
+curl $base_path/conf/generic/aws-config -o ~/.aws/config
 
 ##### Configuring AWS CloudWatch Agent #####
 #instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)

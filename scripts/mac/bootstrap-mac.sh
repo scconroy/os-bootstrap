@@ -53,16 +53,18 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 touch ~/.zshrc
 /usr/local/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
 curl $base_path/conf/mac/zshrc -o ~/.zshrc
-curl $base_path/conf/zpreztorc -o ~/.zpreztorc
+curl $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-curl $base_path/assets/curl-format -o ~/curl-format
-sudo curl $base_path/assets/ls-instances -o /usr/local/bin/ls-instances
-sudo chmod 777 /usr/local/bin/ls-instances
-sudo curl $base_path/assets/ls-instances-all -o /usr/local/bin/ls-instances-all
-sudo chmod 777 /usr/local/bin/ls-instances-all
-sudo curl $base_path/assets/ciphers-test -o /usr/local/bin/ciphers-test
-sudo chmod 777 /usr/local/bin/ciphers-test
+sudo curl $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
+sudo chmod 777 /usr/bin/ls-instances
+sudo curl $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
+sudo chmod 777 /usr/bin/ls-instances-all
+sudo curl $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
+sudo chmod 777 /usr/bin/ciphers-test
+sudo curl $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
+sudo chmod 777 /usr/bin/clone-instance
+curl $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Installing Amazon Tools #####
 brew cask install amazon-chime

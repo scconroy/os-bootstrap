@@ -80,21 +80,21 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
 curl $base_path/conf/linux/zshrc -o ~/.zshrc
-curl $base_path/conf/zpreztorc -o ~/.zpreztorc
+curl $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo curl $base_path/assets/ls-instances -o /usr/bin/ls-instances
+sudo curl $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo curl $base_path/assets/ls-instances-all -o /usr/bin/ls-instances-all
+sudo curl $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo curl $base_path/assets/ciphers-test -o /usr/bin/ciphers-test
+sudo curl $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo curl $base_path/assets/clone-instance -o /usr/bin/clone-instance
+sudo curl $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-curl $base_path/assets/curl-format -o ~/curl-format
+curl $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
-sudo curl $base_path/assets/brew-path -o /etc/sudoers.d/brew-path
+sudo curl $base_path/conf/linux/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
