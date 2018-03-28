@@ -38,11 +38,6 @@ go get -u github.com/wallix/awless
 mkdir ~/.aws
 curl $base_path/conf/generic/aws-config -o ~/.aws/config
 
-##### Configuring AWS CloudWatch Agent #####
-instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
-region=(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
-aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
-
 ##### Setting up Linux Monitoring Scripts ####
 sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
 pip3 install cloudwatchmon
@@ -77,6 +72,11 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
+
+##### Configuring AWS CloudWatch Agent #####
+instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+region=(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
+aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
 
 ##### Installing Web-Benchmarking Tools #####
 pip3 install six bottle
