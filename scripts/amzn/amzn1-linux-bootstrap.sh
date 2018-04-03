@@ -85,28 +85,28 @@ sudo chsh -s /home/linuxbrew/.linuxbrew/bin/zsh $USER
 #sudo chsh -s /usr/local/bin/fish $USER
 
 ##### Adding nanorc to config #####
-curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+curl -s https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-curl $base_path/conf/linux/zshrc -o ~/.zshrc
-curl $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
+curl -s $base_path/conf/linux/zshrc -o ~/.zshrc
+curl -s $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo curl $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
+sudo curl -s $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo curl $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
+sudo curl -s $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo curl $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
+sudo curl -s $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo curl $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
+sudo curl -s $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-curl $base_path/conf/generic/curl-format -o ~/curl-format
+curl -s $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Setting Brew Path #####
-sudo curl $base_path/conf/linux/brew-path -o /etc/sudoers.d/brew-path
+sudo curl -s $base_path/conf/linux/brew-path -o /etc/sudoers.d/brew-path
 sudo chmod 440 /etc/sudoers.d/brew-path
 
 ##### Giving user SuperPowers #####
@@ -122,7 +122,7 @@ echo 'root soft nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-li
 echo 'root hard nofile 256000' | sudo tee -a /etc/security/limits.d/60-nofile-limit.conf
 
 ##### Downloading the next Script #####
-curl $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
+curl -s $base_path/scripts/amzn/brew-install.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additional ToDo Stuff #####

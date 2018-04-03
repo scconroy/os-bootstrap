@@ -16,7 +16,7 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
 ##### Configuring toprc and htoprc #####
 mkdir -p ~/.config/htop/
-curl $base_path/conf/generic/htoprc -o ~/.config/htop/htoprc
+curl -s $base_path/conf/generic/htoprc -o ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Installing libpcap first as its a dependency for other Utilities ####
@@ -31,7 +31,7 @@ brew install awless
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
-curl $base_path/conf/generic/aws-config -o ~/.aws/config
+curl -s $base_path/conf/generic/aws-config -o ~/.aws/config
 
 ##### All the Editor foo ####
 brew install nano

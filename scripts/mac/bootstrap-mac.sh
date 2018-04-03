@@ -46,25 +46,25 @@ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 dscl . -read /Users/$USER UserShell
 
 ##### Adding nanorc to config #####
-curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+curl -s https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 ##### Installing prezto #####
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /usr/local/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-curl $base_path/conf/mac/zshrc -o ~/.zshrc
-curl $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
+curl -s $base_path/conf/mac/zshrc -o ~/.zshrc
+curl -s $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo curl $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
+sudo curl -s $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
 sudo chmod 777 /usr/bin/ls-instances
-sudo curl $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
+sudo curl -s $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
 sudo chmod 777 /usr/bin/ls-instances-all
-sudo curl $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
+sudo curl -s $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
 sudo chmod 777 /usr/bin/ciphers-test
-sudo curl $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
+sudo curl -s $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
 sudo chmod 777 /usr/bin/clone-instance
-curl $base_path/conf/generic/curl-format -o ~/curl-format
+curl -s $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Installing Amazon Tools #####
 brew cask install amazon-chime
@@ -83,7 +83,7 @@ brew cask install quip
 brew cask install microsoft-remote-desktop-beta
 
 ##### Downloading the next Script #####
-curl $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
+curl -s $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
 chmod +x ~/brew-install.sh
 
 ##### Print Additional ToDo Stuff #####

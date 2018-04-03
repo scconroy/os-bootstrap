@@ -15,17 +15,17 @@ sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 ########## Installing Utilities #########
 
 ##### Configuring toprc and htoprc for current User #####
-curl $base_path/conf/linux/toprc -o ~/.toprc
+curl -s $base_path/conf/linux/toprc -o ~/.toprc
 mkdir -p ~/.config/htop/
-curl $base_path/conf/generic/htoprc -o ~/.config/htop/htoprc
+curl -s $base_path/conf/generic/htoprc -o ~/.config/htop/htoprc
 chmod 644 ~/.config/htop/htoprc
 
 ##### Configuring toprc and htoprc for root User #####
 root_home=$(eval echo "~root")
 
-sudo curl $base_path/conf/linux/toprc -o $root_home/.toprc
+sudo curl -s $base_path/conf/linux/toprc -o $root_home/.toprc
 sudo mkdir -p $root_home/.config/htop/
-sudo curl $base_path/conf/generic/htoprc -o $root_home/.config/htop/htoprc
+sudo curl -s $base_path/conf/generic/htoprc -o $root_home/.config/htop/htoprc
 sudo chmod 644 $root_home/.config/htop/htoprc
 
 ##### Installing Shiny new Python versions and AWS Utilities ####
@@ -36,10 +36,10 @@ go get -u github.com/wallix/awless
 
 ##### Configuring AWS CLI Config #####
 mkdir ~/.aws
-curl $base_path/conf/generic/aws-config -o ~/.aws/config
+curl -s $base_path/conf/generic/aws-config -o ~/.aws/config
 
 ##### Configuring AWS CloudWatch Agent #####
-#instance_id=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+#instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 #aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
 
 ##### Setting up Linux Monitoring Scripts ####
