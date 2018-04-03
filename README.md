@@ -45,3 +45,18 @@ time ./rhel7-linux-bootstrap.sh
 After reboot please login back and run the following command
 ```bash
 time ./sysdig-install.sh
+time ./brew-install.sh
+```
+
+### For Ubuntu
+
+```bash
+curl -s https://raw.githubusercontent.com/1ne/os-bootstrap/master/scripts/ubuntu/ubuntu-linux-bootstrap.sh -o ubuntu-linux-bootstrap.sh
+chmod +x ubuntu-linux-bootstrap.sh
+time ./ubuntu-linux-bootstrap.sh
+```
+After reboot please login back and run the following command
+```bash
+time ./sysdig-install.sh
+time ./brew-install.sh
+```
