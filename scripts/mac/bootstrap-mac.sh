@@ -56,14 +56,16 @@ curl -s $base_path/conf/mac/zshrc -o ~/.zshrc
 curl -s $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
 
 ##### Downloading Custom Utils #####
-sudo curl -s $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
-sudo chmod 777 /usr/bin/ls-instances
-sudo curl -s $base_path/assets/tools/ls-instances-all -o /usr/bin/ls-instances-all
-sudo chmod 777 /usr/bin/ls-instances-all
-sudo curl -s $base_path/assets/tools/ciphers-test -o /usr/bin/ciphers-test
-sudo chmod 777 /usr/bin/ciphers-test
-sudo curl -s $base_path/assets/tools/clone-instance -o /usr/bin/clone-instance
-sudo chmod 777 /usr/bin/clone-instance
+sudo curl -s $base_path/assets/tools/ls-instances -o /usr/local/bin/ls-instances
+sudo chmod 777 /usr/local/bin/ls-instances
+sudo curl -s $base_path/assets/tools/ls-instances-all -o  /usr/local/bin/ls-instances-all
+sudo chmod 777 /usr/local/bin/ls-instances-all
+sudo curl -s $base_path/assets/tools/ciphers-test -o  /usr/local/bin/ciphers-test
+sudo chmod 777 /usr/local/bin/ciphers-test
+sudo curl -s $base_path/assets/tools/clone-instance -o  /usr/local/bin/clone-instance
+sudo chmod 777 /usr/local/bin/clone-instance
+sudo curl -s $base_path/assets/tools/chime-cleanse.sh -o  /usr/local/bin/chime-cleanse
+sudo chmod 777 /usr/local/bin/chime-cleanse
 curl -s $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Installing Amazon Tools #####
