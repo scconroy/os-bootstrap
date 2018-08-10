@@ -69,7 +69,8 @@ sleep 15
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-AmazonLinux2 -s
 
 ##### Installing atop #####
-sudo yum install epel-release -y
+#sudo yum install epel-release -y
+sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum --enablerepo=epel install atop -y
 #sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
 sudo systemctl enable atop
@@ -79,7 +80,6 @@ sudo systemctl status atop
 ##### Installing Sysdig Monitoring Tools #####
 sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
 sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-#sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
 sudo yum update -y
