@@ -12,6 +12,9 @@ base_path="https://raw.githubusercontent.com/1ne/os-bootstrap/master"
 ##### Configuring ZSH Reverse Search #####
 sed -i -e "s/local border=0/local border=1/g" ~/.config/znt/n-list.conf
 
+##### Fixing ownership on .cache #####
+sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
+
 ########## Installing Utilities #########
 
 ##### Configuring toprc and htoprc for current User #####
