@@ -62,107 +62,14 @@ sudo systemctl start  amazon-ssm-agent
 sudo systemctl status amazon-ssm-agent
 
 ##### Setting up CloudWatch SSM Parameter Store #####
-CWAParamDump()
-{
-  cat <<EOF
-{
-	"logs": {
-		"logs_collected": {
-			"files": {
-				"collect_list": [
-					{
-						"file_path": "/var/log/messages",
-						"log_group_name": "messages"
-					},
-					{
-						"file_path": "/var/log/secure",
-						"log_group_name": "secure"
-					},
-					{
-						"file_path": "/var/log/dmesg",
-						"log_group_name": "dmesg"
-					}
-				]
-			}
-		}
-	},
-	"metrics": {
-		"append_dimensions": {
-			"AutoScalingGroupName": "${aws:AutoScalingGroupName}",
-			"ImageId": "${aws:ImageId}",
-			"InstanceId": "${aws:InstanceId}",
-			"InstanceType": "${aws:InstanceType}"
-		},
-		"metrics_collected": {
-			"cpu": {
-				"measurement": [
-					"cpu_usage_idle",
-					"cpu_usage_iowait",
-					"cpu_usage_user",
-					"cpu_usage_system"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				],
-				"totalcpu": false
-			},
-			"disk": {
-				"measurement": [
-					"used_percent",
-					"inodes_free"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				]
-			},
-			"diskio": {
-				"measurement": [
-					"io_time",
-					"write_bytes",
-					"read_bytes",
-					"writes",
-					"reads"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				]
-			},
-			"mem": {
-				"measurement": [
-					"mem_used_percent"
-				],
-				"metrics_collection_interval": 60
-			},
-			"netstat": {
-				"measurement": [
-					"tcp_established",
-					"tcp_time_wait"
-				],
-				"metrics_collection_interval": 60
-			},
-			"swap": {
-				"measurement": [
-					"swap_used_percent"
-				],
-				"metrics_collection_interval": 60
-			}
-		}
-	}
-}
-EOF
-}
-
-aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite
-
-##### Configuring AWS CloudWatch Agent #####
 instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}')
+aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite --region $region
+
+##### Configuring AWS CloudWatch Agent #####
 aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
 sleep 15
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-AmazonLinux2 -s
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-AmazonLinux -s
 
 ##### Installing atop #####
 #sudo yum install epel-release -y
