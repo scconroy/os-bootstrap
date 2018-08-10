@@ -39,9 +39,9 @@ mkdir ~/.aws
 curl -s $base_path/conf/generic/aws-config -o ~/.aws/config
 
 ##### Setting up Linux Monitoring Scripts ####
-sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
-pip3 install cloudwatchmon
-(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
+#sudo chown -R ec2-user:ec2-user /home/ec2-user/.cache/
+#pip3 install cloudwatchmon
+#(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
 brew install htop procps sysstat stress sysbench
@@ -73,7 +73,6 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
-
 
 ##### Installing Web-Benchmarking Tools #####
 pip3 install six bottle
