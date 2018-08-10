@@ -4,7 +4,7 @@
 ```bash
 curl -s https://raw.githubusercontent.com/1ne/os-bootstrap/master/scripts/amzn/amzn2-linux-bootstrap.sh -o amzn2-linux-bootstrap.sh
 chmod +x amzn2-linux-bootstrap.sh
-screen -d -m -S brew bash brew-install.sh
+time ./amzn2-linux-bootstrap.sh
 ```
 After reboot please login back and run the following command
 ```bash
