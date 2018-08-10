@@ -4,11 +4,11 @@
 ```bash
 curl -s https://raw.githubusercontent.com/1ne/os-bootstrap/master/scripts/amzn/amzn2-linux-bootstrap.sh -o amzn2-linux-bootstrap.sh
 chmod +x amzn2-linux-bootstrap.sh
-time ./amzn2-linux-bootstrap.sh
+screen -d -m -S brew bash brew-install.sh
 ```
 After reboot please login back and run the following command
 ```bash
-time ./brew-install.sh
+screen -d -m -S brew bash brew-install.sh
 ```
 
 ### For Amazon Linux 1
@@ -20,7 +20,7 @@ time ./amzn1-linux-bootstrap.sh
 ```
 After reboot please login back and run the following command
 ```bash
-time ./brew-install.sh
+screen -d -m -S brew bash brew-install.sh
 ```
 
 ### For macOS
@@ -32,7 +32,7 @@ time ./bootstrap-mac.sh
 ```
 After opening iTerm2
 ```bash
-time ./brew-install.sh
+screen -d -m -S brew bash brew-install.sh
 ```
 
 ### For RHEL7
@@ -45,7 +45,7 @@ time ./rhel7-linux-bootstrap.sh
 After reboot please login back and run the following command
 ```bash
 time ./sysdig-install.sh
-time ./brew-install.sh
+screen -d -m -S brew bash brew-install.sh
 ```
 
 ### For Ubuntu
@@ -58,5 +58,5 @@ time ./ubuntu-linux-bootstrap.sh
 After reboot please login back and run the following command
 ```bash
 time ./sysdig-install.sh
-time ./brew-install.sh
+screen -d -m -S brew bash brew-install.sh
 ```
