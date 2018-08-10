@@ -155,7 +155,7 @@ CWAParamDump()
 EOF
 }
 
-aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux22" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite
+aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite
 
 ##### Configuring AWS CloudWatch Agent #####
 instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
