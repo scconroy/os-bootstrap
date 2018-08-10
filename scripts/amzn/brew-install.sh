@@ -49,7 +49,8 @@ pip3 install glances
 brew install binutils coreutils gawk
 brew install strace valgrind 
 brew install curl axel wget 
-brew install git jq 
+brew install git jq
+brew install ccze
 brew install findutils ddate bsdmainutils libbsd pv peco
 brew install openssh libssh2 sshrc openssl 
 brew install rsync screen ipbt unzip bzip2 xz ddar

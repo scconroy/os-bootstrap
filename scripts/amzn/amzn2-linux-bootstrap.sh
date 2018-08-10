@@ -34,31 +34,6 @@ sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 sudo yum update -y
 sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate awslogs util-linux-user
 
-##### Enabling AWSLogs #####
-sudo systemctl enable awslogsd
-sudo systemctl start  awslogsd
-sudo systemctl status awslogsd
-
-##### Enabling SSM Agent #####
-sudo systemctl enable amazon-ssm-agent
-sudo systemctl start  amazon-ssm-agent
-sudo systemctl status amazon-ssm-agent
-
-##### Installing atop #####
-sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
-sudo systemctl enable atop
-sudo systemctl start  atop
-sudo systemctl status atop
-
-##### Installing Sysdig Monitoring Tools #####
-sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
-sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
-sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-sudo yum -y install kernel-devel-$(uname -r)
-sudo yum -y install sysdig
-sudo yum update -y
-
 ##### Prep for LinuxBrew #####
 password=`openssl rand -base64 37 | cut -c1-20`
 echo "$USER:$password" | sudo chpasswd
@@ -75,6 +50,39 @@ sudo passwd -d `whoami`
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"' >>~/.bash_profile
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
+
+##### Enabling AWSLogs #####
+sudo systemctl enable awslogsd
+sudo systemctl start  awslogsd
+sudo systemctl status awslogsd
+
+##### Enabling SSM Agent #####
+sudo systemctl enable amazon-ssm-agent
+sudo systemctl start  amazon-ssm-agent
+sudo systemctl status amazon-ssm-agent
+
+##### Configuring AWS CloudWatch Agent #####
+instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}')
+aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
+sleep 15
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-AmazonLinux2 -s
+
+##### Installing atop #####
+sudo yum install epel-release -y
+sudo yum install atop -y
+#sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
+sudo systemctl enable atop
+sudo systemctl start  atop
+sudo systemctl status atop
+
+##### Installing Sysdig Monitoring Tools #####
+sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
+#sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum -y install kernel-devel-$(uname -r)
+sudo yum -y install sysdig
+sudo yum update -y
 
 ##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra

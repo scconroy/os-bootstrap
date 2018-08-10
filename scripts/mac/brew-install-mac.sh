@@ -41,7 +41,7 @@ pip3 install neovim
 #curl -sLf https://spacevim.org/install.sh | bash
 
 ##### Installing OS Utilities ####
-brew install htop valgrind findutils ddate pv peco
+brew install htop valgrind findutils ddate pv peco ccze
 brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zip
 
 ##### Installing Network Utilities ####

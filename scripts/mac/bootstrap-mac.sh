@@ -69,7 +69,7 @@ sudo chmod 777 /usr/local/bin/chime-cleanse
 curl -s $base_path/conf/generic/curl-format -o ~/curl-format
 
 ##### Installing Amazon Tools #####
-brew cask install amazon-chime
+#brew cask install amazon-chime
 brew cask install amazon-workspaces
 #brew cask install amazon-workdocs
 
@@ -82,7 +82,7 @@ brew cask install amazon-workspaces
 #brew cask install gpg-suite
 brew cask install typora 
 brew cask install quip
-brew cask install microsoft-remote-desktop-beta
+#brew cask install microsoft-remote-desktop-beta
 
 ##### Downloading the next Script #####
 curl -s $base_path/scripts/mac/brew-install-mac.sh -o ~/brew-install.sh
