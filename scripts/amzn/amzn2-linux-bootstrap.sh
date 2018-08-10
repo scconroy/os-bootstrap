@@ -70,7 +70,7 @@ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-c
 
 ##### Installing atop #####
 sudo yum install epel-release -y
-sudo yum install atop -y
+sudo yum --enablerepo=epel install atop -y
 #sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
 sudo systemctl enable atop
 sudo systemctl start  atop
