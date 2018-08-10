@@ -92,7 +92,7 @@ chmod +x ~/brew-install.sh
 cat << EOF
 ####################################################
 The shell will close and kick you out. Please open iTerm2 and run the following
-time ./brew-install.sh
+screen -dmS brew bash brew-install.sh
 ####################################################
 EOF
 

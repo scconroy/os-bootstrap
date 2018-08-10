@@ -149,7 +149,7 @@ cat << EOF
 ####################################################
 The instance will reboot and kick you out. Please login back and run the following commands
 time ./sysdig-install.sh
-time ./brew-install.sh
+screen -dmS brew bash brew-install.sh
 ####################################################
 EOF
 
