@@ -74,10 +74,6 @@ brew install whois dns2tcp dnsmap dnsperf dnstracer dhcping
 ##### Installing cURL with HTTP/2 Support ####
 brew reinstall curl --with-c-ares  --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
 
-##### Configuring AWS CloudWatch Agent #####
-instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-region=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
-aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
 
 ##### Installing Web-Benchmarking Tools #####
 pip3 install six bottle
