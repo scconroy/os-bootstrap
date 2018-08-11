@@ -85,7 +85,8 @@ sudo yum update -y
 ##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra
 brew install libpcap
-brew install go 
+brew install go
+brew install -s perl
 
 ##### Installing the Shells and Plugins #####
 brew install bash fish zsh 
