@@ -38,5 +38,5 @@ source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
-# VMIE SSH Identities
-# source $HOME/.ssh/vmie.zsh
+# Setting GPG tty
+export GPG_TTY=$(tty)
