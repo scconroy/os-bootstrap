@@ -31,7 +31,7 @@ sudo chmod 644 $root_home/.config/htop/htoprc
 ##### Installing Shiny new Python versions and AWS Utilities ####
 brew install python@2 python ruby
 pip3 install --upgrade pip setuptools wheel
-pip3 install --upgrade awscli aws-shell saws awsebcli awslogs s3cmd
+pip3 install --upgrade awscli aws-shell saws awslogs s3cmd
 go get -u github.com/wallix/awless
 
 ##### Configuring AWS CLI Config #####
