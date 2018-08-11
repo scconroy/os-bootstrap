@@ -61,7 +61,6 @@ brew install redis
 
 ##### All the Editor foo ####
 brew install nano
-brew install vim
 brew install neovim
 pip3 install neovim
 #curl -sLf https://spacevim.org/install.sh | bash
