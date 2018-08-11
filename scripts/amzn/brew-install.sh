@@ -47,7 +47,7 @@ curl -s $base_path/conf/generic/aws-config -o ~/.aws/config
 #(crontab -l 2>/dev/null; echo "* * * * * /home/linuxbrew/.linuxbrew/bin/mon-put-instance-stats.py --mem-util --mem-used --mem-avail --swap-util --swap-used --mem-used-incl-cache-buff --memory-units bytes --loadavg --loadavg-percpu --disk-path / --disk-space-util --disk-space-used --disk-space-avail --disk-space-units bytes --disk-inode-util --from-cron") | crontab -
 
 ##### Installing OS Utilities ####
-brew install htop procps sysstat stress sysbench
+brew install htop procps sysstat stress
 pip3 install glances
 brew install binutils coreutils gawk
 brew install strace valgrind 

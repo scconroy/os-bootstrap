@@ -80,13 +80,13 @@ sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.pu
 sudo curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
 sudo yum -y install kernel-devel-$(uname -r)
 sudo yum -y install sysdig
+sudo yum -y install sysbench
 sudo yum update -y
 
 ##### Tapping Brew Extras and Installing libpcap first as its a dependency for other Utilities #####
 brew tap linuxbrew/extra
 brew install libpcap
 brew install go
-brew install -s perl
 
 ##### Installing the Shells and Plugins #####
 brew install bash fish zsh 
