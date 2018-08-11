@@ -32,7 +32,7 @@ sudo sed -i -e '$i preserve_hostname: true' /etc/cloud/cloud.cfg
 
 ##### Updating the System #####
 sudo yum update -y
-sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate awslogs util-linux-user
+sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate util-linux-user
 
 ##### Prep for LinuxBrew #####
 password=`openssl rand -base64 37 | cut -c1-20`
@@ -51,11 +51,6 @@ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbi
 source ~/.bash_profile
 chmod go-w '/home/linuxbrew/.linuxbrew/share'
 
-##### Enabling AWSLogs #####
-sudo systemctl enable awslogsd
-sudo systemctl start  awslogsd
-sudo systemctl status awslogsd
-
 ##### Enabling SSM Agent #####
 sudo systemctl enable amazon-ssm-agent
 sudo systemctl start  amazon-ssm-agent
@@ -64,7 +59,7 @@ sudo systemctl status amazon-ssm-agent
 ##### Setting up CloudWatch SSM Parameter Store #####
 instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}')
-aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite --region $region
+aws ssm put-parameter --name "AmazonCloudWatch-AmazonLinux" --description "AmazonCloudWatch Agent Config" --type "String" --value "$(curl -s $base_path/conf/linux/CWAgent.json)" --overwrite --region $region
 
 ##### Configuring AWS CloudWatch Agent #####
 aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=instanceids,Values=$instance_id" --parameters '{"action":["Install"],"version":["latest"],"name":["AmazonCloudWatchAgent"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region $region
