@@ -25,7 +25,7 @@ brew install libpcap
 ##### Installing AWS Utilities ####
 brew install python@2 python ruby
 pip3 install --upgrade pip setuptools wheel
-pip3 install --upgrade awscli aws-shell saws awsebcli awslogs s3cmd
+pip3 install --upgrade awscli aws-shell saws awslogs s3cmd
 brew tap wallix/awless
 brew install awless
 
@@ -46,6 +46,9 @@ brew install openssh libssh2 sshrc openssl rsync screen unzip bzip2 xz ddar p7zi
 
 ##### Installing Network Utilities ####
 brew install tcpdump tcpstat jnettop mtr tcptraceroute netcat nmap iperf3 whois arping fping liboping httpstat ipv6calc
+
+##### Installing Homebrew Cask Upgrade ####
+brew tap buo/cask-upgrade
 
 ##### Installing Monitoring Tools #####
 pip3 install glances
