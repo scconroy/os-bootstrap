@@ -3,9 +3,8 @@
 
 ```bash
 curl -s https://raw.githubusercontent.com/1ne/os-bootstrap/master/scripts/amzn/amzn2-linux-bootstrap.sh -o amzn2-linux-bootstrap.sh
-chmod +x amzn2-linux-bootstrap.sh
-screen -dmS bootstrap amzn2-linux-bootstrap.sh
-screen -r
+screen -dmS bootstrap bash amzn2-linux-bootstrap.sh
+screen -r #to reconnect to the session
 ```
 Use CTRL + a,d to disconnect from session after giving the password in the script.  
 After reboot please login back and run the following command
@@ -17,8 +16,7 @@ screen -dmS brew bash brew-install.sh
 
 ```bash
 curl -s https://raw.githubusercontent.com/1ne/os-bootstrap/master/scripts/amzn/amzn1-linux-bootstrap.sh -o amzn1-linux-bootstrap.sh
-chmod +x amzn1-linux-bootstrap.sh
-screen -dmS bootstrap amzn1-linux-bootstrap.sh
+screen -dmS bootstrap bash amzn1-linux-bootstrap.sh
 ```
 After reboot please login back and run the following command
 ```bash
