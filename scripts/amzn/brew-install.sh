@@ -66,7 +66,7 @@ pip3 install neovim
 #curl -sLf https://spacevim.org/install.sh | bash
 
 ##### Installing Disk Utilities ####
-brew install iotop ioping ncdu fio dc3dd ddrescue iozone
+brew install iotop ioping ncdu dc3dd ddrescue iozone
 
 ##### Installing Network Utilities ####
 brew install iftop tcpdump tcpstat nethogs ifstat dnstop jnettop mtr tcptraceroute netcat nmap iperf3
