@@ -7,7 +7,7 @@ chmod +x amzn2-linux-bootstrap.sh
 screen -dmS bootstrap amzn2-linux-bootstrap.sh
 screen -r
 ```
-Use CTRL + a,d to disconnect from session after giving the password in the script
+Use CTRL + a,d to disconnect from session after giving the password in the script.  
 After reboot please login back and run the following command
 ```bash
 screen -dmS brew bash brew-install.sh
