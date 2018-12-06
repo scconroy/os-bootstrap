@@ -66,14 +66,22 @@ aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --targets "Key=in
 sleep 15
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:AmazonCloudWatch-AmazonLinux -s
 
-##### Installing atop #####
-#sudo yum install epel-release -y
+##### Installing atop and set sampling to 60 seconds #####
 sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum --enablerepo=epel install atop -y
-#sudo rpm -ivh https://www.atoptool.nl/download/atop-2.3.0-1.el7.x86_64.rpm
+sudo sed -i 's/INTERVAL=600/INTERVAL=60/' /etc/sysconfig/atop
 sudo systemctl enable atop
 sudo systemctl start  atop
 sudo systemctl status atop
+
+##### Installing and enabling chrony for time sync #####
+sudo yum erase 'ntp*' -y
+sudo yum install chrony -y
+sudo systemctl enable chronyd
+sudo systemctl start chronyd
+sudo systemctl status chronyd
+chronyc sources -v
+chronyc tracking
 
 ##### Installing Sysdig Monitoring Tools #####
 sudo rpm --import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
