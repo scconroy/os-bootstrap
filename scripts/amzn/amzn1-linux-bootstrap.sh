@@ -31,7 +31,7 @@ confirm && sudo sed -i "s/localhost\.localdomain/$hostname/" /etc/sysconfig/netw
 
 ##### Updating the System #####
 sudo yum update -y
-sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate awslogs
+sudo yum groupinstall -y 'Development Tools' && sudo yum install -y curl wget file git irb python-setuptools ruby mlocate awslogs fio iotop
 
 ##### Enabling AWSLogs #####
 sudo chkconfig awslogs on
