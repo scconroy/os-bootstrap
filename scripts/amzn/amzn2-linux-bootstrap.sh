@@ -117,8 +117,8 @@ curl -s https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch ~/.zshrc
 /home/linuxbrew/.linuxbrew/bin/zsh -i -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"; done'
-curl -s $base_path/conf/linux/zshrc -o ~/.zshrc
-curl -s $base_path/conf/generic/zpreztorc -o ~/.zpreztorc
+curl -s $base_path/conf/linux/zshrc -o ~/.zprezto/runcoms/zshrc
+curl -s $base_path/conf/generic/zpreztorc -o ~/.zprezto/runcoms/zpreztorc
 
 ##### Downloading Custom Utils #####
 sudo curl -s $base_path/assets/tools/ls-instances -o /usr/bin/ls-instances
